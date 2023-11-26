@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bellota:wght@300;400;700&family=Inter:wght@100;200;300;400;500;600;700&family=Nunito:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bellota:wght@300;400;700&family=Inter:wght@100;200;300;400;500;600;700&family=Nunito:wght@200;300;400;500;600;700&family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
 
 *{
@@ -14,4 +14,252 @@
 :root{
  --background-white:#fff;
  --primary:#8C111B;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main_nav{
+    width: 300px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profile{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    background-color: var(--primary);
+    gap: 10px;
+    align-items: center;
+    justify-content: left;
+    padding: 10px;
+}
+.profile img{
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+    object-fit: cover;
+    object-position: center;
+}
+.profile span{
+    width: fit-content;
+    display:flex;
+    flex-direction: column;
+}
+.profile span h1{
+    color: #FFF;
+    font-family: Nunito;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+}
+.profile span p{
+    color: #BE7E7E;
+    font-family: Nunito;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.main_nav .link_nav{
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+.main_nav .link_nav a{
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+}
+.main_nav .link_nav a li{
+    width: 100%;
+    padding: 10px;
+    height: 100%;
+    display: flex;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: #888;
+    font-family: Nunito;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+}
+/* Set the default color for the SVG when the container is not active */
+.link_nav li svg {
+    fill: #888;
+    stroke: #888; /* Replace with the color you desire */
+}
+
+/* Change the color of the SVG when the container is active */
+.main_nav .link_nav li.active svg {
+    fill:  var(--primary); /* Color for active state */
+    stroke:  var(--primary);
+}
+
+/* Set background color for the active state */
+.main_nav .link_nav a .active {
+    color:  var(--primary);
+}
+
+
+.main_nav .link_nav .active svg{
+    fill: #FFF;
+    stroke: #FFF;
+}
+.sub_nav{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    padding: 10px;
+}
+.sub_nav a{
+    width: 100%;
+    height: 35px;
+}
+.sub_nav a li{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    padding: 5px;
+    color: #7B7B7B;
+    font-family: Nunito;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+}
+.sub_nav a li img{
+    display: flex;
+    width: 25px;
+    height: 25px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.body{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: space-between;
+}
+.body .top_bar{
+    width: 100%;
+    padding: 10px 1vw  10px 3vw;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.body .top_bar h1{
+    color: #151C28;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+}
+.body .top_bar img{
+    display: flex;
+    width: 24px;
+    height: 24px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+
+@media screen and (max-width : 900px) {
+    .main_nav{
+        position: absolute;
+        z-index: 10;
+        align-self: center;
+        left: 0px;
+        width: 99vw;
+        max-width: 320px;
+       transition: 1s ease-in-out;
+       transform: translateX(-100%);
+    }
+    .main_nav_come_out{
+        transform: translateX(0%); 
+    }
+    .bugger{
+        width: 20px;
+        height: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .top_bar .id{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        gap: 20px;
+    }
+    .bugger hr{
+        width: 100%;
+        height: 20%;
+        background-color: #0f0f0f;
+    }
+    .top_remove{
+        width: 100%;
+        height: 50px;
+        background-color: #0f0f0f;
+    }
+    .profile{
+        position: relative;
+    }
+    .hov_remove_nav{
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    .hov_remove_nav hr{
+        width: 5px;
+        height: 5px;
+        border-radius: 100px;
+        background-color: #0f0f0f;
+    }
+    .hov_remove_nav{
+        align-items: center;
+        justify-content: center;
+    }
+    .hov_remove_nav hr:nth-child(1){
+        width: 35px;
+        position: absolute;
+        transform:rotate(-45deg);
+        
+    }
+    .hov_remove_nav hr:nth-child(3){
+        width: 35px;
+        transform: rotate(45deg);
+        position: absolute;
+    }
 }
