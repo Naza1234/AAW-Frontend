@@ -187,7 +187,150 @@ body{
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
+
 }
+
+
+
+
+
+
+
+
+.content_body{
+    width: 100%;
+    height: 100%;
+    padding: 2vw 1vw  1vw 3vw;
+}
+.content_body .carosell{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+}
+.content_body .carosell .quick_nav{
+    width: fit-content;
+    display:flex;
+    flex-direction: row;
+    gap: 10px;
+    transition: .5s ease-in;
+    position: relative;
+
+}
+.content_body .carosell .quick_nav span{
+    color:#A7A7A7;
+    font-family: Nunito;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    cursor: pointer;
+    line-height: normal;
+    text-transform: capitalize;
+}
+.content_body .carosell .active span:first-child{
+    color: var(--primary);
+}
+.content_body .carosell  hr{
+    transition: .5s ease-in;
+}
+.content_body .carosell .active hr{
+    position: absolute;
+    width: 35%;
+    height: 2.5px;
+    border-radius: 100px;
+    background-color: var(--primary);
+    bottom: -5px;
+    left: 3.5%;
+
+}
+
+.content_body .carosell .explore span:nth-child(2){
+    color: var(--primary);
+}
+
+.content_body .carosell .explore hr{
+    position: absolute;
+    width: 40%;
+    height: 2.5px;
+    border-radius: 100px;
+    background-color: var(--primary);
+    bottom: -5px;
+    right: 5%;
+}
+
+.carosell_cotainer{
+    width: 100%;
+    height: 320px;
+    padding: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.carosell_cotainer .img{
+    display: flex;
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+.carosell_cotainer .img svg{
+    fill: #A7A7A7;
+    transition: .5s ease-in;
+}
+.carosell_cotainer .img:hover svg{
+    fill: #8C111B;
+}
+.carosell_items_cont{
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    height: 320px;
+}
+
+
+.carosell_items_cont .item{
+    width: 400px;
+    height: 320px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid var(--primary, #8C111B);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 @media screen and (max-width : 900px) {
