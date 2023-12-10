@@ -310,11 +310,119 @@ body{
 
 
 
+.carosell_items_cont .item .top_cont{
+    display: flex;
+    width: fit-content;
+    gap: 10px;
+}
+.carosell_items_cont .item .top_cont img{
+    width: 70px;
+    height: 70px;
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: center;
+}
 
+.carosell_items_cont .item .top_cont .dit{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
 
+.carosell_items_cont .item .top_cont .dit h1{
+    color: #000;
+    font-family: Nunito;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+}
+.carosell_items_cont .item .top_cont .dit h2{
+    color: #dbdada;
+    font-family: Nunito;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    /* flex-direction: column; */
+    gap: 15px;
+}
+.carosell_items_cont .item .top_cont .dit h2 svg{
+   width: 16px;
+   height: 16px;
+}
 
+.carosell_items_cont .item p{
+    color: #bbb9b9;
+    font-family: Nunito;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: capitalize;
+    display: flex;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* Number of lines to show */
+    -webkit-box-orient: vertical;
+    align-items: center;
 
-
+    /* flex-direction: column; */
+}
+.carosell_items_cont .item h3{
+    color:var(--primary);
+    font-family: Nunito;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+}
+.carosell_items_cont .item h3 b{
+    color:#bbb9b9;
+    font-family: Nunito;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+}
+.carosell_items_cont .item span{
+    display: flex;
+    gap: 15px;
+    margin-top: 5px;
+}
+.carosell_items_cont .item span h5{
+    width: 60px;
+    height: 35px;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    color:#ffffff;
+    background-color: red;
+    font-family: Nunito;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+    text-align: center;
+    display: flex;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* Number of lines to show */
+    -webkit-box-orient: vertical;
+}
+.carosell_items_cont .item span h5.my_price{
+    background-color: #01FF01;
+}
 
 
 
