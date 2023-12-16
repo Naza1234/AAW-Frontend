@@ -12,3 +12,18 @@ var buttons =document.querySelectorAll(".quick_nav span")
     })
 
 
+
+
+var popBtn=document.querySelectorAll(".auction_btn")
+
+for (let i = 0; i < popBtn.length; i++) {
+    const element = popBtn[i];
+    element.addEventListener("click",()=>{
+      document.getElementsByClassName("popup")[0].classList.add("see_popup")
+    })
+    
+}
+
+document.querySelector(".popup_for_clear_payment h2").addEventListener("click",()=>{
+    document.getElementsByClassName("popup")[0].classList.remove("see_popup")
+})

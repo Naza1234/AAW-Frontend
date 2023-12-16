@@ -162,6 +162,7 @@ body{
     display: flex;
     flex-direction: column;
     height: 100vh;
+    position: relative;
     justify-content: space-between;
 }
 .body .top_bar{
@@ -201,6 +202,7 @@ body{
 .content_body{
     width: 100%;
     height: 100%;
+    position: relative;
     padding: 2vw 1vw  1vw 3vw;
 }
 .content_body .carosell{
@@ -261,6 +263,7 @@ body{
 }
 
 .carosell_cotainer{
+    overflow: hidden;
     width: 100%;
     height: 320px;
     padding: 10px;
@@ -279,25 +282,29 @@ body{
 }
 .carosell_cotainer .img svg{
     fill: #A7A7A7;
+    z-index: 1;
     transition: .5s ease-in;
 }
 .carosell_cotainer .img:hover svg{
     fill: #8C111B;
 }
 .carosell_items_cont{
+    display: flex;
+    gap: 20px;
     align-self: center;
     justify-self: center;
     width: 100%;
     position: absolute;
     top: 0;
     right: 0;
+    height: fit-content;
     z-index: -1;
     height: 320px;
 }
 
 
 .carosell_items_cont .item{
-    width: 400px;
+    max-width: 350px;
     height: 320px;
     flex-shrink: 0;
     display: flex;
@@ -425,6 +432,188 @@ body{
 }
 
 
+.auction{
+    height: fit-content;
+    min-height: 600px;
+}
+.auction_house{
+    display: flex;
+    gap: 20px;
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+}
+.auction_items{
+    max-width: 320px;
+    height: 530px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.auction_items img{
+    width: 100%;
+    height: 200px;
+    flex-shrink: 0;
+    object-fit: cover;
+    object-position: center;
+}
+
+.auction_items .item_dits{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+
+}
+.auction_items .item_dits h1{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    color: #000;
+    font-family: Nunito;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 24px */
+    text-transform: uppercase;
+}
+.auction_items .item_dits h1 img{
+    display: flex;
+    width: 24px;
+    height: 24px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+.auction_items .item_dits h6{
+    color: #FFF;
+    font-family: Nunito;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 18px */
+    text-transform: uppercase;
+    width: 95px;
+    height: 18px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    background: #38C173;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.auction_items .item_dits span{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+.auction_items .item_dits span span {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+}
+.auction_items .item_dits span span img{
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+.auction_items .item_dits span span b{
+    overflow: hidden;
+    color: #7B7B7B;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: Nunito;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 21px */
+    text-transform: uppercase;
+}
+.auction_items .item_dits span h5{
+    color: #7B7B7B;
+    text-align: center;
+    font-family: Nunito;
+    font-size: 8px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 12px */
+    text-transform: uppercase;
+}
+.auction_items .item_dits h2{
+    color:var(--primary);
+    font-family: Nunito;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+}
+.auction_items .item_dits h2 b{
+    color:#7B7B7B;
+    font-family: Nunito;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+}
+.auction_items .item_dits p {
+    color: #bbb9b9;
+    font-family: Nunito;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: capitalize;
+    display: flex;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* Number of lines to show */
+    -webkit-box-orient: vertical;
+    align-items: center;
+
+    /* flex-direction: column; */
+}
+.auction_items .item_dits p svg{
+    width: 16px;
+    height: 16px;
+}
+.auction_items  button{
+    display: flex;
+    width: 100%;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    box-shadow: 0px -20px 10px 0px rgba(255, 255, 255, 0.50);
+    border-radius: 15px;
+    background: #8C111B;
+    color: #FFF;
+    text-align: center;
+    font-family: Nunito;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 24px */
+    text-transform: capitalize;
+}
+ 
 
 
 
@@ -434,9 +623,637 @@ body{
 
 
 
+.popup{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(140, 17, 27, 0.50);
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    transform: scale(0%);
+    transition: .5s ease-in-out;
+}
+
+.see_popup{
+    transform: scale(100%);
+}
+.popup .popitem_auction_room{
+    width: 900px;
+    height: 600px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: #FFF;
+    padding: 1.5vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    overflow: hidden;
+    gap: 5px;
+    align-items: flex-start;
+}
+
+
+.popup .popitem_auction_room h2{
+    display: flex;
+    cursor: pointer;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 10px;
+    color: var(--primary, #8C111B);
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 30px */
+    text-transform: capitalize;
+    width: fit-content;
+}
+.popup .popitem_auction_room h2 img{
+    display: flex;
+    width: 24px;
+    height: 24px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+.popup .popitem_auction_room h1{
+    color: #000;
+    font-family: Poppins;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 48px */
+    text-transform: capitalize;
+}
+.popup .popitem_auction_room span{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    color: #7B7B7B;
+    text-align: center;
+    font-family: Nunito;
+    font-size: 8px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 12px */
+    text-transform: uppercase;
+}
+.popup .popitem_auction_room span span{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+}
+.popup .popitem_auction_room span span img{
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+.popup .popitem_auction_room span span b{
+    overflow: hidden;
+    color: #7B7B7B;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: Nunito;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 21px */
+    text-transform: uppercase;
+}
+.popup .popitem_auction_room img{
+    width: 400px;
+    height: 363px;
+    border-radius: 5px;
+    flex-shrink: 0;
+    object-fit: cover;
+    object-position: center;
+}
+.popup .popitem_auction_room h3{
+    color: #000;
+    font-family: Nunito;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 18px */
+    text-transform: uppercase;
+}
+.popup .popitem_auction_room p svg{
+    width: 18px;
+    height: 18px;
+}
+.popup .popitem_auction_room p{
+    color: #bbb9b9;
+    font-family: Nunito;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: capitalize;
+    display: flex;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5; /* Number of lines to show */
+    -webkit-box-orient: vertical;
+    align-items: center;
+    width: 430px;
+    flex-shrink: 0;
+    /* flex-direction: column; */
+}
+.popup .popitem_auction_room nav{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+.popup .popitem_auction_room nav button{
+    background-color: transparent;
+    color: var(--gray, #D9D9D9);
+    font-family: Nunito;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 18px */
+    text-transform: capitalize;
+}
+.popup .popitem_auction_room nav button.active{
+    color: #000;
+    font-family: Nunito;
+    font-size: 14px;
+    cursor: pointer;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 18px */
+    text-transform: capitalize;
+}
+.popup .popitem_auction_room .info{
+    display: flex;
+    width: 430px;
+    height: 220px;
+    overflow: scroll;
+    flex-shrink: 0;
+    padding-right: 3.5px;
+}
+.popup .popitem_auction_room .info ul{
+    width: 100%;
+    display: flex;
+    height: fit-content;
+    gap: 10px;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    flex-direction: column;
+}
+.popup .popitem_auction_room .info::-webkit-scrollbar{
+    width: 3px;
+    
+}
+.popup .popitem_auction_room .info::-webkit-scrollbar-thumb{
+    background-color: #7B7B7B;
+    border-radius: 1000px;
+}
+.popup .popitem_auction_room .info::-webkit-scrollbar-thumb:hover{
+    background-color: #8C111B;
+}
+.popup .popitem_auction_room .info ul li{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.popup .popitem_auction_room .info ul li h4{
+    color: var(--light-gray, #A7A7A7);
+    font-family: Nunito;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 18px */
+    text-transform: capitalize;
+}
+.popup .popitem_auction_room .info ul li h5{
+    color:#000;
+    font-family: Nunito;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 18px */
+    text-transform: capitalize;
+}
+.popup .popitem_auction_room  .auction_box{
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    width: 430px;
+    padding: 22px 10px 10px 10px;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    gap: 16.598px;
+    border-radius: 5px;
+    background: var(--gray, #D9D9D9);
+    justify-content: space-between;
+    color: #000;
+    font-family: Nunito;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%; /* 18px */
+}
+.popup .popitem_auction_room  .auction_box input{
+    display: flex;
+    width: 100%;
+    height: 37.073px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1.25px solid #D9E3E8;
+    background: #FFF;
+    color: #A3A3A3;
+    font-family: Nunito;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.popup .popitem_auction_room  .auction_box button{
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background: var(--primary, #8C111B);
+    color: #FFF;
+    text-align: center;
+    font-family: Nunito;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 36px */
+    text-transform: capitalize;
+    width: 144px;
+}
 
 
 
+
+.winners{
+    display: flex;
+    gap: 20px;
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: fit-content;
+}
+
+
+.winners .winners_items{
+    width: 320px;
+    height: 600px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    background: #FFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.winners .winners_items img{
+    width: 100%;
+    height: 247.772px;
+    flex-shrink: 0;
+    object-fit: cover;
+    object-position: center;
+}
+
+.winners .winners_items .dit{
+    width: 100%;
+    position: relative;
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    flex-direction: column;
+}
+
+.winners .winners_items .dit img{
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    border-radius: 80px;
+    border: 4px solid #FFF;
+    position: absolute;
+    top: -50%;
+    box-shadow: 0px 2px 2px 0px rgba(84, 84, 84, 0.55);
+}
+.winners .winners_items .dit h1{
+    color: #000;
+    text-align: center;
+    font-family: Nunito;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+}
+.winners .winners_items .dit h2{
+    color: #8C111B;
+    text-align: center;
+    font-family: Nunito;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+}
+.winners .winners_items .dit h3{
+    color: #9C9C9C;
+    font-family: Nunito;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    margin-top: 3px;
+    text-align: center;
+}
+.winners .winners_items .dit h3 b{
+    color: #000;
+    font-family: Nunito;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    text-align: center;
+    line-height: normal;
+}
+.winners .winners_items .dit h5{
+    color: #9C9C9C;
+    font-family: Nunito;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.winners .winners_items .dit ul{
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+    gap: 8px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    margin-top: 10px;
+}
+.winners .winners_items .dit ul li.me{
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+.winners .winners_items .dit ul li{
+    width: 80%;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+.winners .winners_items .dit ul li.me h1{
+    color: #8C111B;
+    font-family: Nunito;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.winners .winners_items .dit ul li.me h2{
+    color: #8C111B;
+    font-family: Nunito;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.winners .winners_items .dit ul li h1{
+    color: #7B7B7B;
+    font-family: Nunito;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.winners .winners_items .dit ul li h2{
+    color: #7B7B7B;
+    font-family: Nunito;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.winners .winners_items  .proceed {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 90px;
+    flex-shrink: 0;
+    flex-direction: column;
+    border-radius: 15px 15px 0px 0px;
+    background: rgba(56, 193, 115, 0.80);
+}
+.winners .winners_items  .proceed h1{
+    color: #FFF;
+    text-align: center;
+    font-family: Nunito;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.winners .winners_items  .proceed button{
+    color: var(--primary, #8C111B);
+    text-align: center;
+    font-family: Nunito;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+    display: inline-flex;
+    width: 100%;
+    height: 30px;
+    border-radius: 0px 0px 3px 3px;
+    background: var(--light-gray, #A7A7A7);
+    justify-content: center;
+    align-items: center;
+    align-self: flex-end;
+}
+
+
+.popup .popup_for_clear_payment{
+    width: 320px;
+    height: fit-content;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    align-self: center;
+}
+
+.popup .popup_for_clear_payment h2 img{
+    display: flex;
+    width: 24px;
+    height: 24px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+.popup .popup_for_clear_payment h1{
+    color: var(--primary, #8C111B);
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 36px */
+    text-transform: capitalize;
+}
+.popup .popup_for_clear_payment .chat{
+    width: 100%;
+    height: 400px;
+    overflow: auto;
+    padding-right: 4px;
+}
+
+.popup .popup_for_clear_payment .chat::-webkit-scrollbar{
+    width: 3px;
+}
+.popup .popup_for_clear_payment .chat::-webkit-scrollbar{
+    background-color: #7B7B7B;
+    border-radius: 20000px;
+}
+.popup .popup_for_clear_payment .chat::-webkit-scrollbar:hover{
+    background-color: #8C111B;
+}
+.popup .popup_for_clear_payment ul{
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.popup .popup_for_clear_payment ul li {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 5px;
+    max-width: 80%;
+}
+.popup .popup_for_clear_payment ul li img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 5px;
+}
+.popup .popup_for_clear_payment ul li h3{
+    display: flex;
+    max-width: 100%;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 0px 10px;
+    background: var(--gray, #D9D9D9);
+    color: #000;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 24px */
+    text-transform: capitalize;
+}
+.popup .popup_for_clear_payment ul li.me {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    align-self: flex-end;
+    gap: 5px;
+    max-width: 80%;
+    
+}
+.popup .popup_for_clear_payment ul li.me img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 5px;
+}
+.popup .popup_for_clear_payment ul li.me h3 {
+    display: flex;
+    padding: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    color: #000;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 24px */
+    text-transform: capitalize;
+    border-radius: 10px 0px;
+    background: var(--light-gray, #A7A7A7);
+}
+.popup .popup_for_clear_payment label {
+    display: inline-flex;
+    height: 50px;
+    width: 100%;
+    align-self: center;
+    padding: 2px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    border: 1px solid var(--primary, #8C111B);
+}
+.popup .popup_for_clear_payment label input {
+    width: 100%;
+    display: flex;
+    color: #000;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 24px */
+    text-transform: capitalize;
+    padding: 5px;
+    height: 100%;
+}
+.popup .popup_for_clear_payment label img {
+    display: flex;
+    width: 24px;
+    height: 24px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    align-self: center;
+}
 
 
 
@@ -514,4 +1331,41 @@ body{
         transform: rotate(45deg);
         position: absolute;
     }
+
+
+
+    .popup{
+        display: flex;
+        overflow: auto;
+        align-items: flex-start;
+    }
+
+
+    .popup .popitem_auction_room{
+       flex-wrap: nowrap;
+       height: fit-content;
+       width: 99vw;
+       border-radius: 0;
+       align-self: top;
+    }
+  
+    .popup .popitem_auction_room img{
+       width: 100%;
+    }
+  
+    .popup .popitem_auction_room p{
+        width: 100%;
+    }
+  
+    .popup .popitem_auction_room .info{
+       width: 100%;
+    }
+ 
+    .popup .popitem_auction_room  .auction_box{
+    width: 100%;
+    }
+   
+    
+    
 }
+
