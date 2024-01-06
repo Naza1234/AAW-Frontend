@@ -215,6 +215,7 @@ body{
     height: 100%;
     position: relative;
     padding: 2vw 1vw  1vw 3vw;
+    overflow-y: auto;
 }
 .content_body .carosell{
     width: 100%;
@@ -386,7 +387,7 @@ body{
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 5; /* Number of lines to show */
+    -webkit-line-clamp: 4; /* Number of lines to show */
     -webkit-box-orient: vertical;
     align-items: center;
 
@@ -441,6 +442,33 @@ body{
 .carosell_items_cont .item span h5.my_price{
     background-color: #01FF01;
 }
+.carosell_items_cont .item button{
+    color:var(--primary);
+    font-family: Nunito;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+    background-color: transparent;
+    position: relative;
+    width:40%;
+    height: 40px;
+    border-radius:5px ;
+    transition: .5s ease-in-out all;
+}
+
+.carosell_items_cont .item button::after{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #8C111B;
+    width: 2.5px;
+    height: 100%;
+    transition: .3s ease-in-out all;
+}
+
 
 
 .auction{
@@ -717,6 +745,7 @@ body{
 .popup .popitem_auction_room span span{
     display: flex;
     gap: 5px;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
 }
@@ -1617,14 +1646,297 @@ body{
     align-items: center;
     justify-content: center;
    }
-   .product_listing .products li{}
-   .product_listing .products li{}
-   .product_listing .products li{}
-   .product_listing .products li{}
-   .product_listing .products li{}
+   
 
 
-@media screen and (max-width : 900px) {
+   .add_product{
+    width: 100%;
+    height: fit-content;
+    
+   }
+
+   .masonry-container {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+
+  
+
+  .add_product .masonry-item {
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
+    width: 95%;
+    align-self: center;
+    box-sizing: content-box;
+    /* min-width: 100%; */
+    height: fit-content;
+    min-width: 550px;
+    flex-shrink: 0;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.add_product .masonry-item h1{
+    color: #000;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 30px */
+    text-transform: capitalize; 
+}
+.add_product .masonry-item h1 b{
+    color: #F00;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%;
+    text-transform: capitalize;
+}
+.add_product .masonry-item div{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.add_product .masonry-item div p{
+    color: var(--light-gray, #A7A7A7);
+    font-family: Poppins;
+    font-size: 13px;
+    width: 100%;
+    max-width: 400px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 19.5px */
+    text-transform: capitalize; 
+}
+.add_product .masonry-item div input{
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+    display: flex;
+    width: 100%;
+    min-width: 230px;
+    padding: 10px;
+    align-items: flex-start;
+    gap: 10px;
+    color: #000;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 30px */
+    text-transform: capitalize;
+}
+.add_product section div input::placeholder{
+    color: #000;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 30px */
+    text-transform: capitalize;
+}
+
+.add_product .masonry-item div.radio{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.add_product .masonry-item div.radio label{
+    display: flex;
+    width: 100%;
+    min-width: 230px;
+    padding: 10px;
+    align-items: flex-start;
+    gap: 10px;
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.05);
+    color: var(--light-gray, #A7A7A7);
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 30px */
+    text-transform: capitalize;
+    cursor: pointer;
+}
+.add_product .masonry-item div.radio input{
+    display:none;
+}
+.add_product .masonry-item div.radio input:hover + label,
+.add_product .masonry-item div.radio input:checked + label{
+    color: #000;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 30px */
+    text-transform: capitalize;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+}
+
+.add_product section:nth-child(2){
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5%;
+}
+.add_product section:nth-child(2) div{
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.add_product section:nth-child(2) div div{
+    display: flex;
+    width: 100%;
+    max-width: none;
+    min-width: 0px;
+    gap: 15px;
+    padding: 10px;
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.15);
+    flex-direction: column;
+}
+.add_product section:nth-child(2) div div span{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+.add_product section:nth-child(2) div div span h2{
+    color: #000;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 24px */
+    text-transform: capitalize;
+    width: 100%;
+}
+.add_product section:nth-child(2) div div span input{
+    background-color: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    border-left: 1px solid #000;
+    background: #FFF;
+}
+.add_product section:nth-child(2) div div div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    border-radius: 10px;
+    color: #04560C;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    text-transform: capitalize;
+    border: 2px solid #04560C;
+    cursor: pointer;
+}
+.add_product section:nth-child(2) div div.wrap{
+    background-color: transparent;
+    box-shadow: none;
+    display: flex;
+    align-items: flex-start;
+    padding: 0;
+    justify-content: right;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.add_product section:nth-child(2) div div.wrap h1{
+    width: fit-content;
+    min-width: 150px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    background: var(--gray, #D9D9D9);
+}
+.add_product section:nth-child(2) div div.wrap h1 b{
+    font-family: Poppins;
+    font-size: 13px;
+    color: var(--light-gray, #A7A7A7);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 19.5px */
+    text-transform: capitalize;
+}
+.add_product section:nth-child(2) div div.wrap p{
+    border-left: 1px solid gray;
+    padding-left: 5px;
+    color: #000;
+}
+.add_product section:nth-child(2) div div.wrap {}
+.add_product .masonry-item div textarea{
+    display: flex;
+    width: 100%;
+    height: 178px;
+    min-width: 230px;
+    padding: 10px;
+    align-items: flex-start;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+    color: #000;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 150%; /* 30px */
+    text-transform: capitalize;
+}
+.add_product .masonry-item div textarea::placeholder{
+    color: #000;
+}
+.add_product .masonry-item div span{
+    display: flex;
+    width: 100%;
+    gap: 5%;
+}
+.add_product .masonry-item div span input{
+    width: 45%;
+    min-width: none;
+}
+
+.add_product button{
+    color: #000;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 0; /* 30px */
+    text-transform: capitalize; 
+    display: flex;
+    width: 250px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: #8C111B;
+    cursor: pointer;
+    color: #fff;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    box-shadow: 0px -20px 10px 0px rgba(255, 255, 255, 0.50);
+}
+.add_product section{}
+   @media screen and (max-width : 900px) {
     .main_nav{
         position: absolute;
         z-index: 10;
