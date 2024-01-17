@@ -1,6 +1,16 @@
 
 
 
+const currentDate = new Date();
+const hours = currentDate.getHours().toString().padStart(2, '0');
+const minutes = currentDate.getMinutes().toString().padStart(2, '0');
+const year = currentDate.getFullYear();
+const month = (currentDate.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-based, so add 1
+const day = currentDate.getDate().toString().padStart(2, '0');
+
+const formattedDateTime = `${year}-${month}-${day} ${hours}:${minutes}`;
+
+
 fetch(`${apiUrl}/user/users/${UserId}`)
 .then((response) => {
 return response.json();
@@ -22,12 +32,15 @@ console.error('Error:', error);
 
 var productPrice=[]
 
+
 fetch(`${apiUrl}/products/products-with-user-id/${UserId}`)
 .then((response) => {
 return response.json();
 })
 .then((dataOne) => {
 
+
+    
   fetch(`${apiUrl}/auction`)
   .then((response) => {
   return response.json();
@@ -56,18 +69,8 @@ window.location=window.location
 });
 
 
-fetch(`${apiUrl}/withdrawal/withdrawals-with-user-id/${UserId}`)
-.then((response) => {
-return response.json();
-})
-.then((data) => {
 
-  chashOut(data)
-}
-)
-.catch((error) => {
-console.error('Error:', error);
-});
+
 
 
 
@@ -84,6 +87,7 @@ return response.json();
 .then((data) => {
    productImg=data
    uploadImg()
+   uploadImgTwo()
 }
 )
 .catch((error) => {
@@ -95,9 +99,6 @@ var auctionProducts=[]
 var OneTimeSail=[]
 
 function populateData(data){
-
-
-
 
 
     for (let i = 0; i < data.length; i++) {
@@ -145,128 +146,9 @@ function populateData(data){
              container.insertAdjacentHTML('beforeend',html)
         }
     
-        document.querySelectorAll(".info h1")[1].innerHTML=`
-        ${data.length}<b>/pro
-        </b>
-        `
-        setTimeout(() => {
-
-          var processedBalance =0
-          var notProcessedBalance =0
-          var chas_out=parseFloat(document.getElementsByClassName("cash_out_amount")[0].textContent.replace(/[^\d.]/g, ''));
-
-
-        var items=document.querySelectorAll(".Btn_items .item")
-          for (let i = 0; i < items.length; i++) {
-              const element = items[i];
-              var itemStartDate=element.getElementsByClassName("hid_data")[0].textContent
-              if (itemStartDate === "auction product ") {
-                auctionProducts.push(element)
-              }else{
-                OneTimeSail.push(element)
-              }
-              var itemPriceStatDate=element.getElementsByClassName("hid_data")[1].textContent
-              if (itemPriceStatDate === "true") {
-                 processedBalance += parseFloat(element.getElementsByClassName("price")[0].textContent.replace(/[^\d.]/g, ''));
-              }else{
-                notProcessedBalance += parseFloat(element.getElementsByClassName("price")[0].textContent.replace(/[^\d.]/g, ''));
-              }
-          }
-        document.querySelectorAll(".info_braek p")[0].innerHTML=`
-        ${auctionProducts.length}<b>/pro
-        </b>
-        `
-        document.querySelectorAll(".info_braek p")[1].innerHTML=`
-        ${OneTimeSail.length}<b>/pro
-        </b>
-        `
-   
-
-
-
-        // cashin section population 
-
-     
-        
-        document.querySelectorAll(".info_cash_in p")[1].innerHTML=`
-        $ ${notProcessedBalance.toLocaleString()}
-        `
-        document.querySelectorAll(".info_cash_in p")[0].innerHTML=`
-        $ ${processedBalance.toLocaleString()}
-        `
-        
-        
-        document.querySelectorAll(".info_cash_in h1")[1].innerHTML=`
-        $${(notProcessedBalance+processedBalance).toLocaleString()}
-        `
-
-         const UserParams={
-          UserAccountBalance:processedBalance-chas_out
-         }
-
-
-         
-         const requestOptions = {
-          method: 'PUT',
-          headers: {
-              'Content-Type': 'application/json',
-            },
-           body: JSON.stringify(UserParams),
-        };
-    
-        fetch(`${apiUrl}/user/users/${UserId}`, requestOptions)
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-        console.log(data);
-        })
-        .catch((error) => {
-          // Handle any errors
-          console.error('Error:', error);
-        });
-
-
-
-
-
-
-
-
-
-
-       }, 1000);
-}
-function chashOut(data){
-         
-  var processedCashOut =0
-  var notProcessedCashOut =0
-  
-
-
-
-  for (let i = 0; i < data.length; i++) {
-      const element = data[i];
-      if (element.Processed === "true") {
-         processedCashOut += element.amount
-      }else{
-        notProcessedCashOut += element.amount
-      }
-  }
-
-document.querySelectorAll(".info_cash_out p")[1].innerHTML=`
-$ ${notProcessedCashOut.toLocaleString()}
-`
-document.querySelectorAll(".info_cash_out p")[0].innerHTML=`
-$ ${processedCashOut.toLocaleString()}
-`
-
-
-document.querySelectorAll(".info_cash_out h1")[1].innerHTML=`
- $ ${(notProcessedCashOut+processedCashOut).toLocaleString()}
-`
 
 }
+
 
 
 function uploadImg(){
@@ -325,13 +207,6 @@ function checkItems(){
 
  
 
-
-
-
-
-
-
-
 var buttons =document.querySelectorAll(".quick_nav span")
 
 
@@ -384,17 +259,151 @@ var buttons =document.querySelectorAll(".quick_nav span")
     
     
 
-    function itemsButtons(){
-      const items=document.getElementsByClassName("item_button")
-      for (let i = 0; i < items.length; i++) {
-          const element = items[i];
-          element.addEventListener("click",(e)=>{
-           var but= e.target
-           var id=but.getElementsByClassName("hid")[0].textContent
-           window.location=`${winUrl}/pages/Product_Detail.html?r=${id}`
-          })
-      }
+
+
+
+
+
+
+    // for the second section of the page 
+
+
+
+
+
+    fetch(`${apiUrl}/products/products-with-auction-price-using-user-id/${UserId}`)
+.then((response) => {
+return response.json();
+})
+.then((data) => {
+    populateSumProductData(data)
+    document.getElementsByClassName("loading_data")[1].classList.add("loading_data_remove")
+   
+}
+)
+.catch((error) => {
+console.error('Error:', error);
+window.location=window.location
+});
+
+
+
+
+function populateSumProductData(data){
+    for (let i = 0; i < data.length; i++) {
+        const element = data[i];
+             var container=document.getElementsByClassName("products")[0]
+               
+             var html=`
+             <li class="other_items">
+             <span>
+                <img src="../assets/image/car.png" alt=""> 
+                ${element.productName}
+             </span>
+             <span>
+             $ ${element.price.toLocaleString()}
+             </span>
+             
+             <span>
+                 ${element.category != "auction product " ? "One time sail" : element.endDateTime < formattedDateTime ? "AuctionEnded" : element.startingDateTime > formattedDateTime? "Yet To Stat" : "In Progress" }
+             </span>
+             <span class="next-page-btn">
+             <h5 class="hid_data">${element.productSold}</h5>
+             <h5 class="hid">${element._id}</h5>
+                <a href="${winUrl}/pages/Product_Detail.html?r=${element._id}">
+                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                     <path d="M17.5 7.5V2.5H12.5" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                     <path d="M2.5 12.5V17.5H7.5" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                     <path d="M17.5 2.5L11.25 8.75" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                     <path d="M8.75 11.25L2.5 17.5" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                   </svg>
+                </a>
+             </span>
+         </li>
+             `
+  
+             container.insertAdjacentHTML('beforeend',html)
+        }
+
+
+        var items=document.querySelectorAll(".other_items")
+        for (let i = 0; i < items.length; i++) {
+            const element = items[i];
+            var itemStartDate=element.getElementsByClassName("hid_data")[0].textContent
+            if (itemStartDate === "false") {
+               element.classList.remove("hid")
+            }else{
+               element.classList.add("hid")
+            }
+        }
+
+
+
+
+
+
+        
+}
+ 
+var buttonsTwo =document.querySelectorAll(".top_nav li")
+
+
+   buttonsTwo[0].addEventListener("click",()=>{
+    document.querySelectorAll(".top_nav li")[0].classList.add("active")
+    document.querySelectorAll(".top_nav li")[1].classList.remove("active")
+    var items=document.querySelectorAll(".other_items")
+ for (let i = 0; i < items.length; i++) {
+     const element = items[i];
+     var itemStartDate=element.getElementsByClassName("hid_data")[0].textContent
+     if (itemStartDate === "false") {
+        element.classList.remove("hid")
+     }else{
+        element.classList.add("hid")
+     }
+ }
+   })
+   buttonsTwo[1].addEventListener("click",()=>{
+    document.querySelectorAll(".top_nav li")[0].classList.remove("active")
+    document.querySelectorAll(".top_nav li")[1].classList.add("active")
+    var items=document.querySelectorAll(".other_items")
+ for (let i = 0; i < items.length; i++) {
+     const element = items[i];
+     var itemStartDate=element.getElementsByClassName("hid_data")[0].textContent
+     if (itemStartDate === "false") {
+        element.classList.add("hid")
+     }else{
+        element.classList.remove("hid")
+     }
+ }
+   })
+
+
+   function uploadImgTwo(){
+    if(productImg.length>0){
+        var items=document.getElementsByClassName("other_items")
+    for (let i = 0; i < items.length; i++) {
+        const element = items[i];
+        var itemId=element.getElementsByClassName("hid")[0].textContent
+        for (let j = 0; j < productImg.length; j++) {
+            const elementTwo = productImg[j];
+            if (elementTwo.productId === itemId) {
+                var itemImg=element.getElementsByTagName("img")[0].src = elementTwo.imageUrl
+              }
+        }
+    }
+    }
   }
 
 
 
+  function itemsButtons(){
+    const items=document.getElementsByClassName("item_button")
+    for (let i = 0; i < items.length; i++) {
+        const element = items[i];
+        element.addEventListener("click",(e)=>{
+         var but= e.target
+         var id=but.getElementsByClassName("hid")[0].textContent
+         window.location=`${winUrl}/pages/Product_Detail.html?r=${id}`
+        })
+    }
+}

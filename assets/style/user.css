@@ -12,8 +12,9 @@
 }
 
 :root{
- --background-white:#fff;
+ --background-white:rgb(255, 255, 255);
  --primary:#8C111B;
+ --font-color-white:#ffffff;
 }
 
 ::-webkit-scrollbar{
@@ -25,9 +26,10 @@
     border-radius: 1000px;
    }
    ::-webkit-scrollbar-thumb:hover{
-    background-color: #8C111B;
+    background-color: var(--primary);
    }
 body{
+    background-color: var(--background-white);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -36,7 +38,7 @@ body{
     width: 300px;
     height: 100vh;
     display: flex;
-    background-color: #FFF;
+    background-color:var(--background-white);
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
@@ -58,7 +60,8 @@ body{
     height: 60px;
     flex-shrink: 0;
     object-fit: cover;
-    object-position: center;
+    object-position: top;
+    border-radius: 400px;    
 }
 .profile span{
     width: fit-content;
@@ -66,12 +69,18 @@ body{
     flex-direction: column;
 }
 .profile span h1{
-    color: #FFF;
+    color:var(--font-color-white) ;
     font-family: Nunito;
     font-size: 18px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    display: flex;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* Number of lines to show */
+    -webkit-box-orient: vertical;
     text-transform: capitalize;
 }
 .profile span p{
@@ -81,6 +90,12 @@ body{
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    display: flex;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* Number of lines to show */
+    -webkit-box-orient: vertical;
 }
 .main_nav .link_nav{
     width: 100%;
@@ -109,6 +124,7 @@ body{
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    cursor: pointer;
     text-transform: capitalize;
 }
 /* Set the default color for the SVG when the container is not active */
@@ -139,6 +155,7 @@ body{
     width: 100%;
     align-items: flex-start;
     padding: 10px;
+    position: relative;
 }
 .sub_nav a{
     width: 100%;
@@ -158,6 +175,7 @@ body{
     font-weight: 700;
     line-height: normal;
     text-transform: uppercase;
+    cursor: pointer;
 }
 .sub_nav  li img{
     display: flex;
@@ -166,6 +184,7 @@ body{
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
+    cursor: pointer;
 }
 
 .body{
@@ -175,6 +194,7 @@ body{
     height: 100vh;
     position: relative;
     justify-content: space-between;
+    overflow-x: hidden;
 }
 .body .top_bar{
     width: 100%;
@@ -204,9 +224,79 @@ body{
 }
 
 
+.scroll_able_not{
+    position: absolute;
+    background-color: #fff;
+    width: 300px;
+    right: 1vw;
+    top: 50px;
+    height: calc(99vh - 50px);
+    z-index: 2;
+    padding: 3px;
+    padding-right: 1px;
+    border-radius: 10px;
+    overflow: auto;
+    box-shadow: 0px 9px 20px 0px rgba(22, 26, 57, 0.36);
+    transform: translateX(100%);
+    transition: .5s ease-in;
+}
 
+.scroll_able_not_see{
+    transform: translateX(0%);
+}
 
+.scroll_able_not section{
+    width: 100%;
+    height: fit-content;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
+.scroll_able_not section div{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    gap: 3px;
+    flex-direction: column;
+    background-color: #ededed;
+    border: 1px solid #969696;
+    border-left: 5px solid #969696;
+    padding: 5px;
+}
+
+.scroll_able_not section div P{
+    color: #888;
+    font-family: Nunito;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    cursor: pointer;
+    align-self: flex-end;
+    text-transform: capitalize;
+}
+.scroll_able_not section div h5{
+    color: #000000;
+    font-family: Nunito;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+.scroll_able_not section div h2{
+    color: #888;
+    font-family: Nunito;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    cursor: pointer;
+    text-transform: capitalize;
+}
 
 
 
@@ -221,6 +311,7 @@ body{
     width: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
     gap: 20px;
     justify-content: space-between;
 }
@@ -273,32 +364,49 @@ body{
     bottom: -5px;
     right: 5%;
 }
-
-.carosell_cotainer{
+.carosell_cotainer,
+.nav_img_icon{
     overflow: hidden;
     width: 100%;
-    height: 320px;
+    min-height: 320px;
     padding: 10px;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.carosell_cotainer .img{
+.nav_img_icon{
+    position: relative;
+}
+.nav_img_icon .img{
     display: flex;
     width: 30px;
     height: 30px;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
+    position: absolute;
+
 }
-.carosell_cotainer .img svg{
+.nav_img_icon{
+
+}
+.nav_img_icon .img:first-child{
+    left: 10px;
+    z-index: 2;
+}
+.nav_img_icon .img.store,
+.nav_img_icon .img:last-child{
+    right: 10px;
+}
+.nav_img_icon .img svg{
     fill: #A7A7A7;
     z-index: 1;
+    pointer-events:none;
     transition: .5s ease-in;
 }
-.carosell_cotainer .img:hover svg{
-    fill: #8C111B;
+.nav_img_icon .img:hover svg{
+    fill: var(--primary);
 }
 .carosell_items_cont{
     display: flex;
@@ -309,14 +417,12 @@ body{
     position: absolute;
     top: 0;
     right: 0;
-    height: fit-content;
-    z-index: -1;
     height: 320px;
 }
 
 
 .carosell_items_cont .item{
-    max-width: 350px;
+    width: 350px;
     height: 320px;
     flex-shrink: 0;
     display: flex;
@@ -324,7 +430,8 @@ body{
     justify-content: space-between;
     padding: 10px;
     border-radius: 10px;
-    border: 2px solid var(--primary, #8C111B);
+    position: relative;
+    border: 2px solid var(--primary, var(--primary));
 }
 
 
@@ -454,6 +561,7 @@ body{
     position: relative;
     width:40%;
     height: 40px;
+    cursor: pointer;
     border-radius:5px ;
     transition: .5s ease-in-out all;
 }
@@ -463,7 +571,7 @@ body{
     position: absolute;
     left: 0;
     top: 0;
-    background-color: #8C111B;
+    background-color: var(--primary);
     width: 2.5px;
     height: 100%;
     transition: .3s ease-in-out all;
@@ -473,7 +581,7 @@ body{
 
 .auction{
     height: fit-content;
-    min-height: 600px;
+    min-height: 516px;
 }
 .auction_house{
     display: flex;
@@ -487,7 +595,7 @@ body{
 
 }
 .auction_items{
-    max-width: 320px;
+    width: 320px;
     height: 530px;
     display: flex;
     flex-direction: column;
@@ -536,7 +644,7 @@ body{
     flex-shrink: 0;
 }
 .auction_items .item_dits h6{
-    color: #FFF;
+    color:var(--font-color-white) ;
     font-family: Nunito;
     font-size: 12px;
     font-style: normal;
@@ -629,6 +737,9 @@ body{
 
     /* flex-direction: column; */
 }
+.auction_items .item_dits p.p_h150{
+    min-height: 90px;
+}
 .auction_items .item_dits p svg{
     width: 16px;
     height: 16px;
@@ -637,13 +748,14 @@ body{
     display: flex;
     width: 100%;
     height: 50px;
+    cursor: pointer;
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
     box-shadow: 0px -20px 10px 0px rgba(255, 255, 255, 0.50);
     border-radius: 15px;
-    background: #8C111B;
-    color: #FFF;
+    background: var(--primary);
+    color:var(--font-color-white) ;
     text-align: center;
     font-family: Nunito;
     font-size: 16px;
@@ -682,17 +794,18 @@ body{
 }
 .popup .popitem_auction_room{
     width: 900px;
-    height: 600px;
+    height: 590px;
     flex-shrink: 0;
     border-radius: 10px;
     background: #FFF;
-    padding: 1.5vw;
+    padding: 1vw;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     overflow: hidden;
     gap: 5px;
     align-items: flex-start;
+    position: relative;
 }
 
 
@@ -702,7 +815,7 @@ body{
     align-items: flex-start;
     justify-content: center;
     gap: 10px;
-    color: var(--primary, #8C111B);
+    color: var(--primary, var(--primary));
     font-family: Poppins;
     font-size: 20px;
     font-style: normal;
@@ -766,13 +879,26 @@ body{
     line-height: 150%; /* 21px */
     text-transform: uppercase;
 }
+
 .popup .popitem_auction_room img{
     width: 400px;
     height: 363px;
-    border-radius: 5px;
+    border-radius: 10px;
     flex-shrink: 0;
     object-fit: cover;
     object-position: center;
+}
+.popup .popitem_auction_room img.green{
+    border: 5px solid rgb(0, 255, 0);
+}
+.popup .popitem_auction_room img.red{
+    border: 5px solid red;
+}
+.popup .popitem_auction_room img.yellow{
+    border: 5px solid yellow;
+}
+.product_details .popitem_auction_room img{
+    height: 323px;
 }
 .popup .popitem_auction_room h3{
     color: #000;
@@ -806,6 +932,9 @@ body{
     flex-shrink: 0;
     /* flex-direction: column; */
 }
+.popup .popitem_auction_room p.min_h110{
+    min-height: 110px;
+}
 .popup .popitem_auction_room nav{
     display: flex;
     gap: 20px;
@@ -821,6 +950,7 @@ body{
     font-weight: 700;
     line-height: 150%; /* 18px */
     text-transform: capitalize;
+    cursor: pointer;
 }
 .popup .popitem_auction_room nav button.active{
     color: #000;
@@ -831,6 +961,7 @@ body{
     font-weight: 700;
     line-height: 150%; /* 18px */
     text-transform: capitalize;
+    cursor: pointer;
 }
 .popup .popitem_auction_room .info{
     display: flex;
@@ -838,7 +969,8 @@ body{
     height: 220px;
     overflow: scroll;
     flex-shrink: 0;
-    padding-right: 3.5px;
+    padding-right: 15px;
+    padding-left: 7px;
 }
 .popup .popitem_auction_room .info ul{
     width: 100%;
@@ -850,6 +982,14 @@ body{
     margin: 0;
     flex-direction: column;
 }
+.popup .popitem_auction_room .info ul p{
+    max-width: 100%;
+    color: var(--light-gray, #A7A7A7);
+}
+.popup .popitem_auction_room .info ul p:last-child{
+    max-width: 100%;
+    color:#000;
+}
 .popup .popitem_auction_room .info::-webkit-scrollbar{
     width: 3px;
     
@@ -859,7 +999,7 @@ body{
     border-radius: 1000px;
 }
 .popup .popitem_auction_room .info::-webkit-scrollbar-thumb:hover{
-    background-color: #8C111B;
+    background-color: var(--primary);
 }
 .popup .popitem_auction_room .info ul li{
     width: 100%;
@@ -894,7 +1034,7 @@ body{
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
-    gap: 16.598px;
+    gap: 13.598px;
     border-radius: 5px;
     background: var(--gray, #D9D9D9);
     justify-content: space-between;
@@ -904,6 +1044,14 @@ body{
     font-style: normal;
     font-weight: 700;
     line-height: 150%; /* 18px */
+}
+
+.pop_al{
+    position: absolute;
+    top: 1vw;
+    left: 1vw;
+    background-color: #fff;
+    max-width: calc(100% - 2vw);
 }
 .popup .popitem_auction_room  .auction_box input{
     display: flex;
@@ -923,14 +1071,14 @@ body{
     font-weight: 400;
     line-height: normal;
 }
-.popup .popitem_auction_room  .auction_box button{
+.auction_box button{
     display: flex;
     height: 40px;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-    background: var(--primary, #8C111B);
-    color: #FFF;
+    background: var(--primary, var(--primary));
+    color:var(--font-color-white) ;
     text-align: center;
     font-family: Nunito;
     font-size: 24px;
@@ -938,10 +1086,24 @@ body{
     font-weight: 500;
     line-height: 150%; /* 36px */
     text-transform: capitalize;
-    width: 144px;
+    width: 200px;
 }
 
 
+.popup .popitem_auction_room .auction_box.auction_box_chart{
+   display: flex;
+   flex-direction: row;
+   padding: 5px;
+}
+.popup .popitem_auction_room .auction_box.auction_box_chart input{
+    width: 70%;
+    background-color: transparent;
+}
+.popup .popitem_auction_room .auction_box.auction_box_chart button{
+    width: 29%;
+    height: 100%;
+    cursor: pointer;
+}
 
 
 .winners{
@@ -959,18 +1121,19 @@ body{
 
 .winners .winners_items{
     width: 320px;
-    height: 600px;
+    height: fit-content;
     flex-shrink: 0;
     border-radius: 5px;
     background: #FFF;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 20px;
 }
 
 .winners .winners_items img{
     width: 100%;
-    height: 247.772px;
+    height: 200px;
     flex-shrink: 0;
     object-fit: cover;
     object-position: center;
@@ -992,7 +1155,7 @@ body{
     border-radius: 80px;
     border: 4px solid #FFF;
     position: absolute;
-    top: -50%;
+    top: -40%;
     box-shadow: 0px 2px 2px 0px rgba(84, 84, 84, 0.55);
 }
 .winners .winners_items .dit h1{
@@ -1006,7 +1169,7 @@ body{
     text-transform: uppercase;
 }
 .winners .winners_items .dit h2{
-    color: #8C111B;
+    color: var(--primary);
     text-align: center;
     font-family: Nunito;
     font-size: 16px;
@@ -1066,7 +1229,7 @@ body{
     align-items: center;
 }
 .winners .winners_items .dit ul li.me h1{
-    color: #8C111B;
+    color: var(--primary);
     font-family: Nunito;
     font-size: 16px;
     font-style: normal;
@@ -1074,7 +1237,7 @@ body{
     line-height: normal;
 }
 .winners .winners_items .dit ul li.me h2{
-    color: #8C111B;
+    color: var(--primary);
     font-family: Nunito;
     font-size: 16px;
     font-style: normal;
@@ -1099,44 +1262,46 @@ body{
 }
 .winners .winners_items  .proceed {
     width: 100%;
-    padding: 10px;
+    padding: 0;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    height: 90px;
+    height: fit-content;
+    gap: 10px;
     flex-shrink: 0;
     flex-direction: column;
     border-radius: 15px 15px 0px 0px;
-    background: rgba(56, 193, 115, 0.80);
 }
 .winners .winners_items  .proceed h1{
-    color: #FFF;
+    color:rgba(56, 193, 115, 0.80);
     text-align: center;
     font-family: Nunito;
-    font-size: 12px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
     text-transform: uppercase;
 }
 
-.winners .winners_items  .proceed button{
-    color: var(--primary, #8C111B);
+ .proceed button{
+    background-color: var(--primary, var(--primary));
     text-align: center;
     font-family: Nunito;
-    font-size: 14px;
+    font-size: 18px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 500;
     line-height: normal;
     text-transform: capitalize;
     display: inline-flex;
     width: 100%;
-    height: 30px;
+    cursor: pointer;
+    height: 50px;
     border-radius: 0px 0px 3px 3px;
-    background: var(--light-gray, #A7A7A7);
+    color: #fff;
     justify-content: center;
     align-items: center;
-    align-self: flex-end;
+    align-self: center;
+    border-radius: 20px 20px 0px 0px;
 }
 
 
@@ -1148,7 +1313,7 @@ body{
     flex-direction: column;
     padding: 10px;
     border-radius: 5px;
-    background-color: #fff;
+    background-color:var(--font-color-white) ;
     align-self: center;
 }
 
@@ -1162,7 +1327,7 @@ body{
     cursor: pointer;
 }
 .popup .popup_for_clear_payment h1{
-    color: var(--primary, #8C111B);
+    color: var(--primary, var(--primary));
     font-family: Poppins;
     font-size: 24px;
     font-style: normal;
@@ -1185,7 +1350,7 @@ body{
     border-radius: 20000px;
 }
 .popup .popup_for_clear_payment .chat::-webkit-scrollbar:hover{
-    background-color: #8C111B;
+    background-color: var(--primary);
 }
 .popup .popup_for_clear_payment ul{
     width: 100%;
@@ -1270,7 +1435,7 @@ body{
     padding: 2px;
     flex-shrink: 0;
     border-radius: 5px;
-    border: 1px solid var(--primary, #8C111B);
+    border: 1px solid var(--primary, var(--primary));
 }
 .popup .popup_for_clear_payment label input {
     width: 100%;
@@ -1333,7 +1498,7 @@ body{
     justify-content: space-between;
    }
    .acount_info .info span h1{
-    color: var(--primary, #8C111B);
+    color: var(--primary, var(--primary));
     font-family: Nunito;
     font-size: 30px;
     font-style: normal;
@@ -1349,8 +1514,8 @@ body{
     align-items: center;
     flex-shrink: 0;
     border-radius: 5px;
-    background: var(--primary, #8C111B);
-    color: #FFF;
+    background: var(--primary, var(--primary));
+    color:var(--font-color-white) ;
     font-family: Nunito;
     font-size: 60px;
     font-style: normal;
@@ -1361,7 +1526,7 @@ body{
    .acount_info .info h1{
     color: #000;
     font-family: Nunito;
-    font-size: 60px;
+    font-size: 50px;
     font-style: normal;
     font-weight: 300;
     line-height: 55px; /* 91.667% */
@@ -1408,7 +1573,7 @@ body{
    .acount_info .info div p{ 
     color: #000;
     font-family: Nunito;
-    font-size: 20px;
+    font-size: 18px;
     font-style: normal;
     font-weight: 300;
     line-height: normal;
@@ -1443,7 +1608,6 @@ body{
    .content_body .carosell .for_products span{
     display: flex;
     gap: 10px;
-    color: var(--primary, #8C111B);
     font-family: Nunito;
     font-size: 16px;
     font-style: normal;
@@ -1460,7 +1624,7 @@ body{
     gap: 5px;
     align-items: center;
     justify-content: center;
-    color: var(--primary, #8C111B);
+    color: var(--primary, var(--primary));
     font-family: Poppins;
     font-size: 20px;
     font-style: normal;
@@ -1477,7 +1641,7 @@ body{
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-    color: #FFF;
+    color:var(--font-color-white) ;
     font-family: Nunito;
     font-size: 64px;
     font-style: normal;
@@ -1486,7 +1650,7 @@ body{
     position: absolute;
     right: 0;
     bottom: 0;
-    background: var(--primary, #8C111B);
+    background: var(--primary, var(--primary));
    }
 
 
@@ -1508,6 +1672,7 @@ body{
    .product_listing .top_nav li{
     color: var(--light-gray, #A7A7A7);
     font-family: Nunito;
+    cursor: pointer;
     width: 100px;
     font-size: 16px;
     font-style: normal;
@@ -1551,6 +1716,7 @@ body{
     min-height: 400px;
     max-height: 400px;
     overflow-x: auto;
+    position: relative;
     padding-bottom: 20px;
    }
    .product_listing .products{
@@ -1563,14 +1729,16 @@ body{
     margin: 0;
     padding-right: 10px;
    }
-   .product_listing .products li{
+   .product_listing .products li:first-child,
+   .product_listing .products .other_items{
     display: flex;
     width: 100%;
     min-width: fit-content;
     justify-content: space-between;
     align-items: center;
    }
-   .product_listing .products li span:nth-child(1){
+   .product_listing .products li:first-child span:nth-child(1),
+   .product_listing .products .other_items span:nth-child(1){
     display: flex;
     width: 250px;
     height: 24px;
@@ -1587,14 +1755,16 @@ body{
     text-transform: capitalize;
     gap: 5px;
    }
-   .product_listing .products li span:nth-child(1) img{
+
+   .product_listing .products .other_items span:nth-child(1) img{
     width: 50px;
     height: 50px;
     border-radius: 3.5px;
     object-fit: cover;
     object-position: center;
    }
-   .product_listing .products li span:nth-child(2){
+   .product_listing .products li:first-child span:nth-child(2),
+   .product_listing .products .other_items span:nth-child(2){
     display: flex;
     width: 150px;
     height: 24px;
@@ -1609,7 +1779,8 @@ body{
     line-height: 150%; /* 24px */
     text-transform: capitalize;
    }
-   .product_listing .products li span:nth-child(3){
+    .product_listing .products li:first-child span:nth-child(3),
+   .product_listing .products .other_items span:nth-child(3){
     display: flex;
     width: 150px;
     height: 24px;
@@ -1625,26 +1796,13 @@ body{
     text-transform: capitalize;
     text-align: right;
    }
-   .product_listing .products li span:nth-child(4){
-    display: flex;
-    width: 150px;
-    height: 24px;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    color: #000;
-    font-family: Nunito;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 150%; /* 24px */
-    text-transform: capitalize;
-   }
-   .product_listing .products li span:nth-child(5){
-    width: 50px;
+   .product_listing .products li:first-child span:nth-child(4),
+   .product_listing .products .other_items span:nth-child(4){
+    width: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
    }
    
 
@@ -1848,12 +2006,10 @@ body{
 .add_product section:nth-child(2) div div.wrap{
     background-color: transparent;
     box-shadow: none;
-    display: flex;
-    align-items: flex-start;
-    padding: 0;
-    justify-content: right;
-    flex-wrap: wrap;
     gap: 10px;
+    display: flex;
+    flex-wrap: wrap-reverse;
+    flex-direction: row;
 }
 .add_product section:nth-child(2) div div.wrap h1{
     width: fit-content;
@@ -1926,9 +2082,9 @@ body{
     width: 250px;
     height: 50px;
     border-radius: 10px;
-    background-color: #8C111B;
+    background-color: var(--primary);
     cursor: pointer;
-    color: #fff;
+    color:var(--font-color-white) ;
     margin-top: 10px;
     justify-content: center;
     align-items: center;
@@ -1936,7 +2092,284 @@ body{
     box-shadow: 0px -20px 10px 0px rgba(255, 255, 255, 0.50);
 }
 .add_product section{}
+
+
+
+  .product_details .popitem_auction_room{
+    width: 100%;
+    border-radius: 0;
+    min-height: 100%;
+  }
+.popup .popitem_auction_room .info ul.charting li{
+    color: #000;
+    font-family: Nunito;
+    font-size: 14px;
+    cursor: pointer;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+    text-transform: capitalize;
+    background-color: #ededed;
+    padding: 5px;
+    border-radius: 0px 10px 10px 10px;
+    width: fit-content;
+    max-width: 70%;
+}
+.popup .popitem_auction_room .info ul.charting li.me{
+    color: #ededed;
+    font-family: Nunito;
+    font-size: 14px;
+    cursor: pointer;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 150%;
+    text-transform: capitalize;
+    background-color: var(--primary);
+    padding: 5px;
+    border-radius:10px 0px 10px 10px;
+    width: fit-content;
+    align-self: flex-end;
+    max-width: 70%;
+}
+
+
+
+
+
+
+.cash_out{
+    width: 100%;
+    height: calc(100vh - 130px);
+    overflow: auto;
+    position: relative;
+}
+
+.cash_out .cash_out_body{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+.cash_out .cash_out_body .elements{
+    width: 100%;
+    min-width: 600px;
+    display: flex;
+    background-color: #fcfafa;
+    padding: 10px 15px;
+    min-height: 80px;
+    align-items: center;
+    border: 2px solid #bbb9b9;
+    border-left: 15px solid #bbb9b9;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 10px;
+}
+.flex_it{
+    width: 100%;
+    display: flex;
+    min-height:60px;
+    align-items: center;
+    justify-content: space-between;
+}
+.cash_out .cash_out_body .elements.approved{
+    border: 2px solid rgb(0, 255, 0);
+    border-left: 15px solid rgb(0, 255, 0);
+}
+.cash_out .cash_out_body .elements.decliened{
+    border: 2px solid red;
+    border-left: 15px solid red;
+}
+.cash_out .cash_out_body .elements h1 {
+    color: #000000;
+    font-family: Nunito;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+.cash_out .cash_out_body .elements h1 b{
+    color: #888;
+    font-family: Nunito;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+.cash_out .cash_out_body .elements span{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 15px;
+    justify-content: space-between;
+    align-self: flex-start;
+}
+.cash_out .cash_out_body .elements span div{
+    display: flex;
+    gap: 15px;
+}
+.cash_out .cash_out_body .elements span div button{
+    background-color: transparent;
+    width: fit-content;
+    align-self: flex-end;
+    font-family: Nunito;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    cursor: pointer;
+    padding: 6px 25px;
+    cursor: pointer;
+    border-radius: 0px;
+    text-transform: capitalize;
+}
+.cash_out .cash_out_body .elements span div button.approve{
+    border: 1px solid rgb(0, 255, 0);
+    color:rgb(0, 255, 0) ;
+    border-left: 5px solid rgb(0, 255, 0);
+}
+.cash_out .cash_out_body .elements span div button.decline{
+    border: 1px solid red;
+    color: red;
+    border-left: 5px solid red;
+}
+.cash_out .cash_out_body .elements span p{
+    color: #000000;
+    font-family: Nunito;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+    text-transform: capitalize;
+}
+.cash_out .cash_out_body .elements span .button{
+    background-color: transparent;
+    width: fit-content;
+    align-self: flex-end;
+    color: #ffffff;
+    font-family: Nunito;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    cursor: pointer;
+    background-color: #e4e4e4;
+    padding: 6px 25px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-transform: capitalize;
+}
+
+
+
+.cash_out_page{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cash_input{
+    max-width: 400px;
+    width: 100%;
+    min-height: 300px;
+    background-color: #fcfafa;
+    padding: 30px 15px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    box-shadow: 0px 0px 20px 0px #e4e4e4;
+}
+
+.cash_input h1{
+    color: var(--primary);
+    font-family: Nunito;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+}
+.cash_input .form{
+    color: #9c9c9c;
+    font-family: Nunito;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.cash_input .form input{
+    color: #000000;
+    font-family: Nunito;
+    font-size: 14px;
+    padding: 5px;
+    height: 40px;
+    border-radius: 5px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: capitalize;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.cash_input .form span{
+    width: 100%;
+    height: fit-content;
+    justify-content: space-between;
+    display: flex;
+    margin-top: 30px;
+}
+
+.cash_input .form span a,
+.form  button{
+    width: 45%;
+    text-align: center;
+    height: 40px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    cursor: pointer;
+    color: #000000;
+    font-family: Nunito;
+    font-size: 18px;
+    padding: 5px;
+    height: 40px;
+    border-radius: 5px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.cash_input .form span a{
+    background-color:#cdcdcd ;
+}
+.form  button{
+    background-color:var(--primary) ;
+    color: #fff;
+}
+
    @media screen and (max-width : 900px) {
+    
     .main_nav{
         position: absolute;
         z-index: 10;
@@ -2046,3 +2479,253 @@ body{
     
 }
 
+
+
+.active_parent_to_button button{
+    background-color: #A6A6A6;
+    pointer-events: none;
+    position: relative; 
+ }
+ .active_parent_to_button button::after{
+     width: 25px;
+     height: 25px;
+     border-radius: 30px;
+     border-top:3px solid #fff;
+     position: absolute;
+     content: '';
+     right: 10%;
+     align-self: center;
+     cursor: pointer;
+     justify-self: center;
+     animation:infinite .3s rotate_load ease-in-out;
+ }
+ .popup .popup_for_clear_payment label.active_parent_to_button img{
+    display: none;
+}
+
+ @keyframes rotate_load {
+     from{
+ 
+     }to{
+         transform: rotate(360deg);
+     }
+ }
+
+.alate_box.error{
+    width: 100%;
+    height: fit-content;
+    min-height: 50px;
+    border-radius: 10px;
+    border: 2px solid #ee7c83;
+    padding: 10px;
+    color: red;
+    font-family: Nunito;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: capitalize;
+    animation: 1s alate_show forwards;
+ }
+ .alate_box.okay{
+    width: 100%;
+    height: fit-content;
+    min-height: 50px;
+    border-radius: 10px;
+    border: 2px solid green;
+    padding: 10px;
+    color: green;
+    font-family: Nunito;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: capitalize;
+    animation: 1s alate_show forwards;
+ }
+
+ @keyframes alate_show {
+    from{
+        transform: translateX(100%);
+    }to{
+        transform: translateX(0%);
+    }
+ }
+ .winners .winners_items.hid,
+ .product_listing .products .hid,
+ .hid_data_stat,
+ .hid{
+    display: none;
+ }
+ .carosell_items_cont .hid{
+    display: none;
+ }
+ .hid_data{
+    display: none;
+ }
+
+ .loading_data{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #FFF;
+    z-index: 11;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+ }
+
+ .loading_data_remove{
+    display: none;
+ }
+
+ .lds-facebook {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-facebook div {
+    display: inline-block;
+    position: absolute;
+    left: 8px;
+    width: 16px;
+    background: var(--primary);
+    animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+  }
+  .lds-facebook div:nth-child(1) {
+    left: 8px;
+    animation-delay: -0.24s;
+  }
+  .lds-facebook div:nth-child(2) {
+    left: 32px;
+    animation-delay: -0.12s;
+  }
+  .lds-facebook div:nth-child(3) {
+    left: 56px;
+    animation-delay: 0;
+  }
+  @keyframes lds-facebook {
+    0% {
+      top: 8px;
+      height: 64px;
+    }
+    50%, 100% {
+      top: 24px;
+      height: 32px;
+    }
+  }
+  
+
+
+
+
+
+
+  html,
+body {
+  font-size: 24px;
+}
+
+.main-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-container .check-container {
+  width: 6.25rem;
+  height: 7.5rem;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.main-container .check-container .check-background {
+  width: 100%;
+  height: calc(100% - 1.25rem);
+  background: linear-gradient(to bottom right, #5de593, #41d67c);
+  box-shadow: 0px 0px 0px 65px rgba(255, 255, 255, 0.25) inset, 0px 0px 0px 65px rgba(255, 255, 255, 0.25) inset;
+  transform: scale(0.84);
+  border-radius: 50%;
+  animation: animateContainer 0.75s ease-out forwards 0.75s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+}
+.main-container .check-container .check-background svg {
+  width: 65%;
+  transform: translateY(0.25rem);
+  stroke-dasharray: 80;
+  stroke-dashoffset: 80;
+  animation: animateCheck 0.35s forwards 1.25s ease-out;
+}
+.main-container .check-container .check-shadow {
+  bottom: calc(-15% - 5px);
+  left: 0;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, #49da83, transparent);
+  animation: animateShadow 0.75s ease-out forwards 0.75s;
+}
+
+@keyframes animateContainer {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+    box-shadow: 0px 0px 0px 65px rgba(255, 255, 255, 0.25) inset, 0px 0px 0px 65px rgba(255, 255, 255, 0.25) inset;
+  }
+  25% {
+    opacity: 1;
+    transform: scale(0.9);
+    box-shadow: 0px 0px 0px 65px rgba(255, 255, 255, 0.25) inset, 0px 0px 0px 65px rgba(255, 255, 255, 0.25) inset;
+  }
+  43.75% {
+    transform: scale(1.15);
+    box-shadow: 0px 0px 0px 43.334px rgba(255, 255, 255, 0.25) inset, 0px 0px 0px 65px rgba(255, 255, 255, 0.25) inset;
+  }
+  62.5% {
+    transform: scale(1);
+    box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.25) inset, 0px 0px 0px 21.667px rgba(255, 255, 255, 0.25) inset;
+  }
+  81.25% {
+    box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.25) inset, 0px 0px 0px 0px rgba(255, 255, 255, 0.25) inset;
+  }
+  100% {
+    opacity: 1;
+    box-shadow: 0px 0px 0px 0px rgba(255, 255, 255, 0.25) inset, 0px 0px 0px 0px rgba(255, 255, 255, 0.25) inset;
+  }
+}
+@keyframes animateCheck {
+  from {
+    stroke-dashoffset: 80;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes animateShadow {
+  0% {
+    opacity: 0;
+    width: 100%;
+    height: 15%;
+  }
+  25% {
+    opacity: 0.25;
+  }
+  43.75% {
+    width: 40%;
+    height: 7%;
+    opacity: 0.35;
+  }
+  100% {
+    width: 85%;
+    height: 15%;
+    opacity: 0.25;
+  }
+}
