@@ -5,7 +5,7 @@ const currentURL = window.location.search;
  const itemId=searchParams.get("r")
 
 
-
+ var productImg=[]
 
 
 if(itemId != null){
@@ -34,16 +34,7 @@ return response.json();
    if (itemId === null) {
     document.getElementsByClassName("loading_data")[0].classList.add("loading_data_remove")
    }
-}
-)
-.catch((error) => {
-console.error('Error:', error);
-window.location=window.location
-});
-
-
-
-var productImg=[]
+ 
 fetch(`${apiUrl}/productImage/product-images`)
 .then((response) => {
 return response.json();
@@ -56,6 +47,16 @@ return response.json();
 .catch((error) => {
 console.error('Error:', error);
 });
+}
+)
+.catch((error) => {
+console.error('Error:', error);
+window.location=window.location
+});
+
+
+
+
 
 
 

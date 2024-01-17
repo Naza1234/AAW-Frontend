@@ -1,7 +1,7 @@
 
 
 
-
+var productImg=[]
 
 var buttons =document.querySelectorAll(".quick_nav span")
 
@@ -28,16 +28,7 @@ return response.json();
    }else{
     window.location=window.location
    }
-}
-)
-.catch((error) => {
-console.error('Error:', error);
-window.location=window.location
-});
-
-
-
-var productImg=[]
+   
 fetch(`${apiUrl}/productImage/product-images`)
 .then((response) => {
 return response.json();
@@ -50,6 +41,16 @@ return response.json();
 .catch((error) => {
 console.error('Error:', error);
 });
+}
+)
+.catch((error) => {
+console.error('Error:', error);
+window.location=window.location
+});
+
+
+
+
 
 
 

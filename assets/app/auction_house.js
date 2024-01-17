@@ -13,7 +13,7 @@ if(itemId != null){
 }
 
 
-
+var productImg=[]
 
   
 const currentDate = new Date();
@@ -34,6 +34,18 @@ return response.json();
    if (itemId === null) {
     document.getElementsByClassName("loading_data")[0].classList.add("loading_data_remove")
    }
+   fetch(`${apiUrl}/productImage/product-images`)
+   .then((response) => {
+   return response.json();
+   })
+   .then((data) => {
+      productImg=data
+      uploadImg()
+   }
+   )
+   .catch((error) => {
+   console.error('Error:', error);
+   });
 }
 )
 .catch((error) => {
@@ -43,19 +55,8 @@ window.location=window.location
 
 
 
-var productImg=[]
-fetch(`${apiUrl}/productImage/product-images`)
-.then((response) => {
-return response.json();
-})
-.then((data) => {
-   productImg=data
-   uploadImg()
-}
-)
-.catch((error) => {
-console.error('Error:', error);
-});
+
+
 
 
 

@@ -1,4 +1,4 @@
-
+var productImg=[]
 
 
 fetch(`${apiUrl}/user/users/${UserId}`)
@@ -46,6 +46,19 @@ return response.json();
   });
   
   
+  fetch(`${apiUrl}/productImage/product-images-with-user-id/${UserId}`)
+.then((response) => {
+return response.json();
+})
+.then((data) => {
+   productImg=data
+   uploadImg()
+}
+)
+.catch((error) => {
+console.error('Error:', error);
+});
+
    
 
 }
@@ -76,19 +89,7 @@ console.error('Error:', error);
 
 
 
-var productImg=[]
-fetch(`${apiUrl}/productImage/product-images-with-user-id/${UserId}`)
-.then((response) => {
-return response.json();
-})
-.then((data) => {
-   productImg=data
-   uploadImg()
-}
-)
-.catch((error) => {
-console.error('Error:', error);
-});
+
 
 
 var auctionProducts=[]
