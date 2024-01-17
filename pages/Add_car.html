@@ -18,10 +18,10 @@
        <img src="../assets/image/profile.png" alt="">
        <span>
         <h1>
-            Juan Dela Cruz
+            ....
         </h1>
         <p>
-            juandelacruz@mail.com
+             ....
         </p>
        </span>
      </div>
@@ -51,7 +51,7 @@
             <path d="M8.41991 13.1499C7.85991 13.1499 7.40991 12.6999 7.40991 12.1499C7.40991 11.5999 7.85991 11.1499 8.40991 11.1499C8.95991 11.1499 9.40991 11.5999 9.40991 12.1499C9.40991 12.6999 8.96991 13.1499 8.41991 13.1499Z" />       
              </svg>
            
-            Boy now
+            Buy now
         </li></a>
         <a href="./shore_home.html" ><li>
            
@@ -72,7 +72,7 @@
                     <path d="M5.34739 3.12674V6.28646V3.12674ZM3.2085 4.7066H7.48627H3.2085ZM6.41683 14.1858V17.3455V14.1858ZM4.27794 15.7656H8.55572H4.27794ZM13.9029 3.12674L16.3477 8.54329L22.4585 10.2361L16.3477 11.9289L13.9029 17.3455L11.4582 11.9289L5.34739 10.2361L11.4582 8.54329L13.9029 3.12674Z"  stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
             
-            Bid Winners
+            my wines
         </li></a>
        
      </ul>
@@ -107,7 +107,12 @@
                     Add product
                   </h1>
             </div>
-                    <img src="../assets/image/icon8.png" alt="">
+                 <img src="../assets/image/icon8.png" alt="" class="notification">
+                   <section class="scroll_able_not">
+                    <section class="notification_ul">
+                   
+                    </section>
+                   </section> 
         </div>
 
 
@@ -116,6 +121,7 @@
          
 
           <form class="add_product masonry-container">
+           
             <section class="masonry-item">
                 <h1>
                     general information  <b>*</b>
@@ -124,35 +130,35 @@
                    <p>
                     name of the car
                    </p>
-                   <input type="text" placeholder="name of product....">
+                   <input required type="text" placeholder="name of product....">
                 </div>
                 <div>
                    <p>
                     the price of the car ($)
                    </p>
-                   <input type="number" placeholder="0.000">
+                   <input required type="number" placeholder="0.000">
                 </div>
                 <div>
                    <p>
                     location of product
                    </p>
-                   <input type="text" placeholder="location....">
+                   <input required type="text" placeholder="location....">
                 </div>
                 <div class="radio">
                    <p>
                     select product qualification
                    </p>
-                   <input type="radio" id="item1" name="general">
+                   <input required type="radio" id="item1" name="general" value="As-Is Condition (Major Repairs)">
                   <label for="item1">
-                    name of product....  
+                    As-Is Condition (Major Repairs) 
                 </label>
-                <input type="radio" id="item2" name="general">
+                <input required type="radio" id="item2" name="general" value=" Minor Repairs Required">
                   <label for="item2">
-                    name of product....  
+                    Minor Repairs Required
                   </label>
-                  <input type="radio" id="item3" name="general" >
+                  <input required type="radio" id="item3" name="general"  value="Certified or Minimal Repairs Required">
                   <label for="item3">
-                    name of product....  
+                    Certified or Minimal Repairs Required
                   </label>
                 </div>
                 <div>
@@ -161,7 +167,7 @@
                    </p>
 
                    <div class="radio">
-                       <input type="file" id="imgup">
+                       <input required type="file" id="imgup">
                        <label for="imgup" style="color: black;">
                         upload file
                        </label>
@@ -171,11 +177,11 @@
                     <p>
                         select product category
                     </p>
-                    <input type="radio" id="item4" name="category">
+                    <input required type="radio" id="item4" name="category" value="auction product ">
                    <label for="item4">
                      auction product 
                     </label>
-                    <input type="radio" id="item5" name="category">
+                    <input required type="radio" id="item5" name="category" value="one time sails product">
                    <label for="item5">
                      one time sails product  
                     </label>
@@ -199,14 +205,14 @@
                             <h2>
                                 detail title  
                             </h2>
-                            <input type="text" placeholder="info">
+                            <input required type="text" placeholder="info">
                         </span>
 
                         <span>
                             <h2>
                                 detail information 
                             </h2>
-                            <input type="text" placeholder="info">
+                            <input required type="text" placeholder="info">
                         </span>
                         <div class="click">
                             add details
@@ -239,14 +245,14 @@
                             <h2>
                                 detail title  
                             </h2>
-                            <input type="text" placeholder="info">
+                            <input required type="text" placeholder="info">
                         </span>
 
                         <span>
                             <h2>
                                 detail information 
                             </h2>
-                            <input type="text" placeholder="info">
+                            <input required type="text" placeholder="info">
                         </span>
                         <div class="click">
                             add details
@@ -254,14 +260,7 @@
                     </div>
 
                     <div class="wrap">
-                        <h1>
-                            <b>
-                                title
-                            </b>
-                            <p>
-                                infor
-                            </p>
-                        </h1>
+                       
                     </div>
                 </div>
             </section>
@@ -291,8 +290,8 @@
                         auction satring date/time
                     </p>
                     <span>
-                        <input type="date">
-                        <input type="time">
+                        <input required type="date">
+                        <input required type="time">
                     </span>
                 </div>
 
@@ -301,12 +300,14 @@
                         auctuion ending date/time
                     </p>
                     <span>
-                        <input type="date">
-                        <input type="time">
+                        <input required type="date">
+                        <input required type="time">
                     </span>
                 </div>
              </section>
+                      <h6 class="alate_box">
 
+                      </h6>           
              <button>
                 add product
              </button>
@@ -318,6 +319,6 @@
 
     </section>
     <script src="../assets/app/nav.js"></script>
-    <script src="../assets/app/home.js"></script>
+    <script src="../assets/app/add_car.js"></script>
 </body>
 </html>

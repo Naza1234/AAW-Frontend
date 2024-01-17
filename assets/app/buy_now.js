@@ -66,7 +66,7 @@ return response.json();
 })
 .then((data) => {
    productPrice=data
-  
+ 
 }
 )
 .catch((error) => {
@@ -81,7 +81,7 @@ console.error('Error:', error);
 function populateData(data){
     for (let i = 0; i < data.length; i++) {
         const element = data[i];
-        if(element.category === "auction product " ){
+        if(element.category === "one time sails product" ){
              var container=document.getElementsByClassName("auction_house")[0]
                
              var html=`
@@ -90,7 +90,7 @@ function populateData(data){
              <div class="item_dits">
                 <h1>
                  <b>${element.productName}</b>
-                 <img src="../assets/image/copy.png" alt=""  >
+                 <img src="../assets/image/copy.png" alt="">
                 </h1>
                 <h6>
                  Live
@@ -104,10 +104,7 @@ function populateData(data){
                      recent bid
                  </h5>
                 </span>
-                <h2>
-                   bid ends on:
-                 <b class="has_ended">${element.endDateTime}</b>
-                </h2>
+                
                 <p>
                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="21" viewBox="0 0 18 21" fill="none">
                      <path opacity="0.4" d="M17.5 6.7C16.45 2.08 12.42 0 8.87998 0C8.87998 0 8.87998 0 8.86998 0C5.33998 0 1.29998 2.07 0.249978 6.69C-0.920022 11.85 2.23998 16.22 5.09998 18.97C6.15998 19.99 7.51998 20.5 8.87998 20.5C10.24 20.5 11.6 19.99 12.65 18.97C15.51 16.22 18.67 11.86 17.5 6.7Z" fill="#A7A7A7"/>
@@ -126,7 +123,7 @@ function populateData(data){
              <h5 class="hid">${element._id}</h5>
              <h5 class="hid_data">${element.startingDateTime}</h5>
              <h5 class="hid_data_stat">${element.productSold}</h5>
-                 BID NOW 
+                 BUY NOW 
              </button>
          </div>
              `
@@ -136,7 +133,6 @@ function populateData(data){
     }
     buttonHasBeenClicked()
     uploadPrice()
-    uploadImg()
 }
 
 // 
@@ -189,39 +185,8 @@ function uploadPrice(){
 
 
 
-var buttons =document.querySelectorAll(".quick_nav span")
 
-
-    buttons[0].addEventListener("click",()=>{
-     document.getElementsByClassName("quick_nav")[0].classList.add("active")
-     document.getElementsByClassName("quick_nav")[0].classList.remove("explore")
-     var items=document.querySelectorAll(".auction_items")
-     for (let i = 0; i < items.length; i++) {
-         const element = items[i];
-         var itemStartDate=element.getElementsByClassName("hid_data")[0].textContent
-         var itemEndDate=element.getElementsByClassName("has_ended")[0].textContent
-         if (itemStartDate < formattedDateTime && itemEndDate > formattedDateTime) {
-            element.classList.remove("hid")
-         }else{
-            element.classList.add("hid")
-         }
-     }
-    })
-    buttons[1].addEventListener("click",()=>{
-        document.getElementsByClassName("quick_nav")[0].classList.remove("active")
-     document.getElementsByClassName("quick_nav")[0].classList.add("explore")
-     var items=document.querySelectorAll(".auction_items")
-     for (let i = 0; i < items.length; i++) {
-         const element = items[i];
-         var itemStartDate=element.getElementsByClassName("hid_data")[0].textContent
-         var itemEndDate=element.getElementsByClassName("has_ended")[0].textContent
-         if (itemStartDate > formattedDateTime && itemEndDate > formattedDateTime) {
-            element.classList.remove("hid")
-         }else{
-            element.classList.add("hid")
-         }
-     }
-    })
+    
 
 
 
@@ -380,7 +345,7 @@ function popUp(carData,carImg,carDetails,garageDetails,carPrice,id){
       </h1>
      <span>
       <span>
-          <img src="../assets/image/arro.png" alt="" >
+          <img src="../assets/image/arro.png" alt="">
             <b>
               $ ${carPrice.length === 0? carData.price.toLocaleString() : carPrice[0].amount.toLocaleString()}
             </b>
@@ -416,9 +381,11 @@ function popUp(carData,carImg,carDetails,garageDetails,carPrice,id){
 
      </h6>
       YOUR BID
-      <input type="number">
+      <h2 style="color: #000; font-weight: 500;">
+      $ ${carPrice.length === 0? carData.price.toLocaleString() : carPrice[0].amount.toLocaleString()}
+      </h2>
         <button class="bid_but_arc">
-          bid
+        buy now
         </button>
      </label>
   </section>
@@ -573,76 +540,8 @@ function popUp(carData,carImg,carDetails,garageDetails,carPrice,id){
     BidButton.addEventListener("click",(e)=>{
         var btn=e.target
         var parent=btn.parentElement
-        var input=parent.getElementsByTagName("input")[0].value
         parent.classList.add("active_parent_to_button")
-        var price=carPrice.length === 0? carData.price : carPrice[0].amount
-        if (input > price) {
-             const params={
-                userId : UserId, 
-                productId : id, 
-                amount : input
-             }
-             
-      const requestOptions = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-          },
-         body: JSON.stringify(params),
-      };
-      var errorIs=false
-  
-      fetch(`${apiUrl}/auction/add_action`, requestOptions)
-      .then((response) => {
-        if (response.status != 200) {
-            errorIs=!errorIs
-          // Handle the 400 Bad Request error
-          console.error('Bad Request Error:', response);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        // Handle the response data here
-        console.log(data);
-        if (errorIs) {
-            document.getElementsByClassName("pop_al")[0].classList.add("error")
-            document.getElementsByClassName("pop_al")[0].textContent= "User cannot participate in more than one auction at a time when using free"
-            parent.classList.remove("active_parent_to_button")
-           setTimeout(() => {
-            document.getElementsByClassName("pop_al")[0].classList.remove("error")
-            document.getElementsByClassName("pop_al")[0].textContent=""
-           }, 5000);
-        }else{
-            document.getElementsByClassName("pop_al")[0].classList.add("okay")
-            document.getElementsByClassName("pop_al")[0].textContent="Auction placed successfully"
-            parent.classList.remove("active_parent_to_button")
-           setTimeout(() => {
-            document.getElementsByClassName("pop_al")[0].classList.remove("okay")
-            document.getElementsByClassName("pop_al")[0].textContent=""
-           }, 5000);
-        }
-      })
-      .catch((error) => {
-        // Handle any errors
-        console.error('Error:', error);
-        document.getElementsByClassName("pop_al")[0].classList.add("error")
-            document.getElementsByClassName("pop_al")[0].textContent="User cannot participate in more than one auction at a time when using free"
-            parent.classList.remove("active_parent_to_button")
-           setTimeout(() => {
-            document.getElementsByClassName("pop_al")[0].classList.remove("error")
-            document.getElementsByClassName("pop_al")[0].textContent=""
-           }, 5000);
-      });
-        }else{
-            document.getElementsByClassName("pop_al")[0].classList.add("error")
-            document.getElementsByClassName("pop_al")[0].textContent="please the value you have placed is lower than the value you are trying to out Bid"
-            parent.classList.remove("active_parent_to_button")
-           setTimeout(() => {
-            document.getElementsByClassName("pop_al")[0].classList.remove("error")
-            document.getElementsByClassName("pop_al")[0].textContent=""
-           }, 5000);
-        }
-
+        
     })
 
 }
