@@ -12,8 +12,9 @@
 }
 
 :root{
- --background-white:#fff;
- --primary:#3DA9F5;
+    --background-white:rgb(255, 255, 255);
+    --primary: #2533f5 ;
+    --font-color-white:#ffffff;
 }
 
 

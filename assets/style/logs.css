@@ -12,8 +12,9 @@
 }
 
 :root{
- --background-white:#fff;
- --primary:#8C111B;
+  --background-white:rgb(255, 255, 255);
+  --primary: #2533f5 ;
+  --font-color-white:#ffffff;
 }
 
 body{
@@ -27,172 +28,33 @@ body{
     min-height: 100vh;
 }
  .slideshow{
-    width: fit-content;
-    height: 640px;
+    width: 100%;
+    /* max-width: 1400px; */
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     gap: 20px;
     display: none;
-}
- .slideshow .content{
+  }
+  .slideshow .content{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 40px;
+    /* gap: 40px; */
     width: 100%;
     height: 100%;
 }
- .slideshow .write{
-    display: flex;
-    width: 320px;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-}
+ 
 
-.slideshow .write span{
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   width: 100%;
-   height: fit-content;
-}
-.slideshow .write span:first-child p{
-    color: #000;
-    font-family: Nunito;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-}
-.slideshow .write span:first-child h3{
-    color: #000;
-    font-family: Bellota;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    text-transform: capitalize;
-}
-.slideshow .write span:first-child p:last-child{
-    margin-top: 15px;
-}
-.slideshow .write span button{
-    display: flex;
-    width: 300px;
-    height: 45px;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    border: 1px solid var(--primary, #8C111B);
-    color: #FFF;
-    text-align: center;
-    font-family: Nunito;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-    text-transform: capitalize;
-    border-radius: 30px;
-    background: #8C111B;
-}
-.slideshow .write span:last-child p{
-    margin: 5px;
-    color: #000;
-    text-align: center;
-    font-family: Nunito;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-}
-.slideshow .write span:last-child p a{
-    cursor: pointer;
-    color: #11B719;
-    font-family: Nunito;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
-}
-
-.slideshow .in{
-    display: flex;
-    padding: 0px 21px;
-    height: fit-content;
-    align-items: flex-end;
-    gap: 18px;
-}
-.slideshow .in div{
-    width: 20px;
-    height: 20px;
-    border-radius: 100px;
-    background: #D9D9D9;
-}
-.slideshow .in .active{
-    background: var(--primary);
-}
-
-.slideshow .content .cover_img{
-    width: 400px;
-    height: auto;
-    flex-shrink: 0;
+.slideshow .content .cover_for_logs{
+  height: 100vh;
+  width:calc(100% - 500px);
+  background-color: #000;
 }
 
 
-.slideshow h5{
-    color: #000;
-    text-align: center;
-    font-family: Nunito;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 300;
-    line-height: normal;
-    display: flex;
-    width: 300px;
-    height: 72px;
-    flex-direction: column;
-    justify-content: center;
-    flex-shrink: 0;
-}
-.slideshow .write_shot{
-    height: 300px;
-}
-
-
-.slideshow_show {
-    display: flex;
-    animation: come_in 2s forwards;
-}
-@keyframes come_in {
-    from{
-        transform: translateX(100%);  
-    }
-    to{
-        transform: translateX(0%);
-        display: flex;  
-    }
-}
-.slideshow_hide{
-    animation: go_out 2s forwards;
-}
-@keyframes go_out {
-    from{
-        transform: translateX(0%);  
-    }
-    to{
-        transform: translateX(-100%);
-        display: none;  
-    }
-}
-.cover{
-    width: fit-content;
-    overflow-x: hidden;
-}
 
 
 
@@ -204,14 +66,16 @@ body{
 
 .form{
     display: flex;
-}
-.sign_up{
-   width: 300px;
-   height: fit-content;
+  }
+  .sign_up{
+    /* background-color: #000; */
+    padding: 20px;
+    height: 100vh;
+    width: 100%;
+    max-width: 500px;
    display: flex;
    gap: 10px;
-   flex-direction: column;
-   padding: 5px; 
+   flex-direction: column; 
 }
 .sign_up h2{
     color: #000;
@@ -333,11 +197,6 @@ form span p a{
     font-weight: 700;
     line-height: normal;
     cursor: pointer;
-}
-.slideshow .content .cover_for_logs{
-    height: 100%;
-    width: auto;
-    max-height: 600px;
 }
 
 

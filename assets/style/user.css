@@ -13,7 +13,7 @@
 
 :root{
  --background-white:rgb(255, 255, 255);
- --primary:#8C111B;
+ --primary: #2533f5 ;
  --font-color-white:#ffffff;
 }
 
@@ -29,7 +29,7 @@
     background-color: var(--primary);
    }
 body{
-    background-color: var(--background-white);
+    /* background-color: var(--background-white); */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,8 +49,10 @@ body{
     height: 200px;
     display: flex;
     flex-direction: row;
-    background-color: var(--primary);
+    background: url("../image/Section.png");
     gap: 10px;
+    background-size: cover;
+    background-repeat: no-repeat;
     align-items: center;
     justify-content: left;
     padding: 10px;
@@ -195,6 +197,7 @@ body{
     position: relative;
     justify-content: space-between;
     overflow-x: hidden;
+    background: url("../image/");
 }
 .body .top_bar{
     width: 100%;
@@ -306,6 +309,8 @@ body{
     position: relative;
     padding: 2vw 1vw  1vw 3vw;
     overflow-y: auto;
+    background: url("https://s3-alpha-sig.figma.com/img/bf97/541e/9131b722c800d5fedf39f48df6fb5171?Expires=1706486400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=bHFrNbmPX39n3u5joCKJIRtjlOiCDmktQT8cmrNgtx5O12W9ogo37oiBrQv6nv-P2aoxyyeXdb7EdBzwVHO4yQpZf0ou7Xu67A0xotO2mkFQhLIEp6bqau7x9BYTZ6y8L-h350Plal9n1d9drE4RvEqo5n~t8TCC8CGb0~162oO3Xwcrrk-AvUlG8EPxr1kN8vSLb~A4juDDp1RwDr8gcBI2hpeE0GuEbwZPRwS8PkSENZsp5oGTUxpoew5AE4dy7fhITFnx~9tulEowmLDKocatkNcy3~nHwzFwrqgv4arKDH-49GdLFb3gh2t0vAbw1ddjprs5mpGPyHHgehsZ5w__");
+    background-size: cover;
 }
 .content_body .carosell{
     width: 100%;
@@ -554,7 +559,7 @@ body{
     font-family: Nunito;
     font-size: 16px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 600;
     line-height: normal;
     text-transform: capitalize;
     background-color: transparent;
@@ -574,10 +579,15 @@ body{
     background-color: var(--primary);
     width: 2.5px;
     height: 100%;
-    transition: .3s ease-in-out all;
+    z-index: -1;
+    transition: 1s ease-in-out all;
 }
-
-
+.carosell_items_cont .item button:hover{
+    color: #ededed;
+}
+.carosell_items_cont .item button:hover::after{
+    width: 100%;
+}
 
 .auction{
     height: fit-content;
