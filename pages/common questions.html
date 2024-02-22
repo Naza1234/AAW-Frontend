@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/style/user1.css">
+    <title>Auction-Add new car</title>
+</head>
+<body>
+      <header>
+        <div class="top_nav">
+            <div class="logo">
+                 Auto Auction
+            </div>
+            <div class="search">
+                <input type="text" placeholder="search for ur new car">
+                <button>
+                    Search Inventory   
+                </button>
+            </div>
+
+
+            <a href="./Winners.html">
+                <div class="my_account">
+                    <img src="../assets/image/profile-circle.png" alt="">
+                    <h1>
+                        my name is this
+                    </h1>
+                  </div>
+               </a>
+        </div>
+        <nav>
+            <div class="hr" onclick="toggleNav()">
+                <hr>
+                <hr>
+                <hr>
+            </div>
+          <ul class="nav_it">
+            <li>
+                <a href="./how to buy.html">
+                    How it work
+                </a>
+            </li>
+            <li class="drop_down">
+                Inventory
+                <ul>
+                    <li>
+                        <a href="./sales lest.html">Sales lest</a>
+                    </li>
+                    <li>
+                        <a href="./vehicle finde.html">vehicle finder</a>
+                    </li>
+                    <li>
+                        <a href="./saved vehicles.html">saved vehicles</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="drop_down">
+                Auctions
+                <ul>
+                    <li>
+                        <a href="./today auctions.html">today Auctions</a>
+                    </li>
+                    <li>
+                        <a href="Auction calinder.html">Auction calender</a>
+                    </li>
+                    <li>
+                        <a href="join auction.html">join auction</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="drop_down">
+              Services & support 
+                <ul>
+                    <li>
+                       <a href="./how to buy.html#how_to_buy">how to buy</a>
+                    </li>
+                    <li>
+                        <a href="./common questions.html">common questions</a>
+                    </li>
+                    <li>
+                        <a href="./contact us.html">contact us</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+       <a href="./contact us.html">
+        <button>
+            help center
+        </button>
+       </a>
+        <a href="./add_cars.html">
+            <button>
+                sell  your car
+            </button>
+        </a>
+        </nav>
+      </header>
+
+      <section class="frequently_asked_questions its_here" id="frequently_asked_questions">
+        <h1>
+             Frequently Asked Questions 
+            <hr>
+        </h1>
+      <ul>
+          <li>
+            <span>
+
+                <h1>
+                      How do I start bidding and buying in auctions?
+                </h1>
+            </span>
+            <p>
+                  The first step to bidding and buying in Auto auctions 
+                  is to register to be a Member. Registration is completely 
+                  free and only takes a few minutes. Just upload a copy of your government-issued ID,
+                   then once your documents and account information have been reviewed and approved, 
+                   you can then participate in car auctions
+            </p>
+        </li>
+        <li>
+          <span>
+    
+              <h1>
+                    How do I participate in instant purchase?
+              </h1>
+            </span>
+            <p>
+                  
+                  Members can bypass the virtual auction of certain vehicles labeled Buy It Now.
+                  Bids can't  be placed on these vehicles, 
+                  but Members can also purchase them immediately for a predetermined price 
+                  listed on the vehicle’s  Details page.
+            </p>
+      </li>
+        <li>
+          <span>
+    
+              <h1>
+                How do I pay for a vehicle?
+              </h1>
+            </span>
+            <p>
+                 to pay for a vehicle you can do that after winning an auction buy going to your profile 
+                 and selecting the vehicle and proceeding to the payment page.buy for the buy now vehicle
+                  you pay after you decide to buy the vehicle bt clicking the pay now button.
+            </p>
+      </li>
+        <li>
+          <span>
+    
+              <h1>
+                How do I schedule pickup after paying? 
+              </h1>
+            </span>
+            <p>
+                 After the payment has been mad in ur won product page in your profile
+                 you can see the product listed there and you then now able to chart with the 
+                 sale person to decors further on the product. note untie you approve that you
+                  have gotten the car the money you pay is not made available to the vendor.
+            </p>
+      </li>
+    </ul>
+    <script>
+        var button=document.querySelectorAll(" ul li span")
+        for (let i = 0; i < button.length; i++) {
+            const element = button[i];
+            element.addEventListener("click",()=>{
+                element.parentElement.classList.toggle("active")
+                console.log(element.parentElement);
+            })
+            
+        }
+    </script>
+      </section>
+  <script src="../assets/app/nav.js"></script>
+</body>
+</html>

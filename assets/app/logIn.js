@@ -50,7 +50,7 @@ loginForm.addEventListener("submit",(e)=>{
            }, 10000);
         }else{
             localStorage.setItem("AutoAuctionUserKey",data)
-         window.location=`${winUrl}/pages/Home.html`
+         window.location=`${winUrl}/pages/sales lest.html`
         }
       })
       .catch((error) => {
