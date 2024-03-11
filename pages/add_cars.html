@@ -19,14 +19,14 @@
                 </button>
             </div>
 
-            <a href="./Winners.html">
-                <div class="my_account">
-                    <img src="../assets/image/profile-circle.png" alt="">
+             <a href="./signup.html">
+                <div class="my_account logs">
+                    <img src="../assets/image/add-user.png" alt="">
                     <h1>
-                        my name is this
+                        signup 
                     </h1>
                   </div>
-               </a>
+            </a>
         </div>
         <nav>
             <div class="hr" onclick="toggleNav()">
@@ -103,7 +103,7 @@
 
 
             
-            <div >
+            <div>
                 <h1>
                     which make
                 </h1>
@@ -198,7 +198,7 @@
                 <h1>
                     Price
                 </h1>
-                <input type="text">
+                <input type="number">
                 <div class="button">
                     next
                 </div>
@@ -210,26 +210,24 @@
                 <h1>
                     Car Details
                 </h1>
-             <section>
-                <div>
-                    <input type="text">
-                    <input type="text">
-                    <div class="button" style="
-                    background-color: #1254ff;
-                    color: #fff;">
-                        add
-                    </div>
-                    <div class="button">
-                        next
-                    </div>
-                   </div>
-                   <ul>
-                    <h2>
-                        <b>item1: </b>
-                        name
-                    </h2>
-                   </ul>
-             </section>
+                <section>
+                    <div>
+                        <input type="text">
+                        <input type="text">
+                        <div class="button_add" style="
+                        background-color: #1254ff;
+                        color: #fff;">
+                            add
+                        </div>
+                       
+                       </div>
+                       <ul>
+                       
+                       </ul>
+                </section>
+                <div class="button" style="margin-left: 2.55%;">
+                    next
+                </div>
             </div>
 
 
@@ -243,22 +241,20 @@
                 <div>
                     <input type="text">
                     <input type="text">
-                    <div class="button" style="
+                    <div class="button_add" style="
                     background-color: #1254ff;
                     color: #fff;">
                         add
                     </div>
-                    <div class="button">
-                        next
-                    </div>
+                   
                    </div>
                    <ul>
-                    <h2>
-                        <b>item1: </b>
-                        name
-                    </h2>
+                   
                    </ul>
              </section>
+             <div class="button" style="margin-left: 2.55%;" >
+                next
+            </div>
             </div>
 
 
@@ -313,10 +309,52 @@
             </div>
 
 
+            <div class="hid">
+                <h1>
+                    cover image
+                </h1>
+                <input type="file" >
+                <div class="button">
+                    next
+                </div>
+            </div>
+   
+            <div class="hid">
+                <h1>
+                    other images
+                </h1>
+             <section>
+                <div>
+                    <input type="file">
+                    <div class="button_add_image" style="
+                    background-color: #1254ff;
+                    color: #fff;">
+                        add
+                    </div>
+                   
+                   </div>
+                   <ul class="image_container">
+                   
+                   </ul>
+             </section>
+             <div class="button" style="margin-left: 2.55%;" >
+                next
+            </div>
+            </div>
+
+            <div class="hid">
+                <h1>
+                    submit form
+                </h1>
+            
+                <button class = "button">
+                    Add product
+                </button>
+            </div>
           
-
+  
          </form>
-
+         
         </section>
         <section class="list">
             <div>
@@ -328,7 +366,7 @@
              </span>
             </div>
           <ul>
-            <li>
+            <li class="active">
                make
             </li>
             <li>
@@ -364,9 +402,28 @@
             <li>
                 period
             </li>
+            <li>
+                cover image
+            </li>
+            <li>
+                other image
+            </li>
+            <li>
+                submit
+            </li>
           </ul>
+        </section>
+        <section class="pop hid">
+            <div class="dit">
+                <div class="lds-facebook"><div></div><div></div><div></div></div>
+                <h1>
+                    Adding product
+                </h1>
+            </div>
+            <!-- -->
         </section>
       </section>
   <script src="../assets/app/nav.js"></script>
+  <script src="../assets/app/add product.js"></script>
 </body>
 </html>

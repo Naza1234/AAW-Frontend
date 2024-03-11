@@ -47,7 +47,12 @@ signUpForm.addEventListener("submit",(e)=>{
            }, 5000);
         }else{
             localStorage.setItem("AutoAuctionUserKey",data._id)
-         window.location=`${winUrl}/pages/sales lest.html`
+        var location= localStorage.getItem("AAWRedLink")
+        if (location) {
+          window.location=location
+        }else{
+          window.location=`${winUrl}/pages/sales lest.html`
+        }
         }
       })
       .catch((error) => {

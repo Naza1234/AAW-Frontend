@@ -1,3 +1,6 @@
+const winUrl="https://autoauction.space"
+const apiUrl="https://aawserver.onrender.com"
+
 
 
 function toggleNav(){
@@ -19,5 +22,41 @@ for (let i = 0; i < item.length; i++) {
        setTimeout(() => {
         targetElement.getElementsByTagName("ul")[0].classList.remove("active")
        }, 2500);
+    })
+}
+
+const UserId=localStorage.getItem("AutoAuctionUserKey")
+
+console.log(UserId);
+
+if (!UserId) {
+    // window.location=`${winUrl}/pages/loging.html`
+}else{
+    document.getElementsByClassName("top_nav")[0].innerHTML=`
+    <div class="logo">
+    Auto Auction
+</div>
+<div class="search">
+   <input type="text" placeholder="search for ur new car">
+   <button>
+       Search Inventory   
+   </button>
+</div>
+<a href="./Winners.html">
+<div class="my_account logs">
+    <img src="../assets/image/profile-circle.png" alt="">
+    <h1>
+        my name is this
+    </h1>
+  </div>
+</a>
+    `
+}
+
+var logs= document.getElementsByClassName("logs")[0]
+
+if (logs) {
+    logs.addEventListener("click",()=>{
+        localStorage.setItem("AAWRedLink",window.location)
     })
 }
