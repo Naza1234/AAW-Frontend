@@ -131,7 +131,7 @@ function populateData(data){
                    price updates
                </b>
                <span>
-               <h2 class="price">$ ${element.Price.toLocaleString()}</h2>
+               <h2 class="price">$ ${element.Price}</h2>
                </span>
              </h3>
              <button class="item_button">
@@ -295,7 +295,7 @@ function uploadPrice(){
             for (let j = 0; j < productPrice.length; j++) {
           const elementTwo = productPrice[j];
           if (elementTwo.productId === itemId) {
-              element.querySelectorAll("span h2")[0].textContent=`$ ${elementTwo.amount.toLocaleString()}`
+              element.querySelectorAll("span h2")[0].textContent=`$ ${elementTwo.amount}`
             }else{
             }
       }

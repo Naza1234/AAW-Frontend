@@ -110,12 +110,12 @@
       <section class="items" >
        <section>
         <section class="items_list" >
-            <div class="search" style="justify-content: space-between;">
+            <form class="search" style="justify-content: space-between;">
                 <h1>
                 <img src="../assets/image/calendar.png" alt="">  calendar search
              </h1>
-             <div>starting date: <input type="date" min="2024-02-10" max="2024-03-10"></div>
-             <div>ending date date: <input type="date" min="2024-02-10" max="2024-03-10"></div>
+             <div>starting date: <input type="date"  required></div>
+             <div>ending date date: <input type="date"  required></div>
 
            <div>
               <button style="padding: 10px;
@@ -125,8 +125,8 @@
                 get Auctions
               </button>
            </div>
-         </div>
-         <ul>
+         </form>
+         <ul class="product_listing">
             <li class="heading">
                 <span>
                     sale time
@@ -147,46 +147,7 @@
                     book mark
                 </span>
             </li>
-            <li>
-                <span>
-                    sale time
-                </span>
-                <span>
-                    car name
-                </span>
-                <span>
-                    current sale 
-                </span>
-                <span>
-                    current price
-                </span>
-                <span>
-                    condition
-                </span>
-                <span>
-                    book mark
-                </span>
-            </li>
-            <li>
-                <span>
-                    sale time
-                </span>
-                <span>
-                    car name
-                </span>
-                <span>
-                    current sale 
-                </span>
-                <span>
-                    current price
-                </span>
-                <span>
-                    condition
-                </span>
-                <span>
-                    book mark
-                </span>
-            </li>
+           
          </ul>
         </section>
         
@@ -213,5 +174,8 @@
         </div>
     </section>
   <script src="../assets/app/nav.js"></script>
+  <script src="../assets/app/auctionCalinder.js"></script>
+  <script src="../assets/app/bookmark.js"></script>
+  <script src="../assets/app/loadeNextPage.js"></script>
 </body>
 </html>

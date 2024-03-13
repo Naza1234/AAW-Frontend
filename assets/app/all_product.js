@@ -65,7 +65,7 @@ return response.json();
 )
 .catch((error) => {
 console.error('Error:', error);
-window.location=window.location
+// window.location=window.location
 });
 
 
@@ -131,7 +131,7 @@ function populateData(data){
                    price updates
                </b>
                <span>
-               <h2 class="price">$ ${element.Price.toLocaleString()}</h2>
+             class="price">$ ${element.Price.toLocaleString()}</h2>
                </span>
              </h3>
              <button class="item_button">
@@ -283,7 +283,7 @@ return response.json();
 )
 .catch((error) => {
 console.error('Error:', error);
-window.location=window.location
+// window.location=window.location
 });
 
 

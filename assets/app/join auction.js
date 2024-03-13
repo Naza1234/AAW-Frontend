@@ -1,4 +1,4 @@
-console.log(600);
+console.log("its a go");
 
 fetch(`${apiUrl}/auction/todays-auction`)
     .then((response) => {
@@ -18,11 +18,24 @@ fetch(`${apiUrl}/auction/todays-auction`)
 
 
 
+    fetch(`${apiUrl}/productImage/product-images`)
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+     
+        for (let i = 0; i < data.length; i++) {
+            const element = data[i];
+            uploadImage(element)
+        }
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
 
 
-    const ongoingAuctions = [];
-    const upcomingAuctions = [];
 
+   
     function checkAuctionStatus(auction) {
         const currentTime = new Date();
     
@@ -31,11 +44,7 @@ fetch(`${apiUrl}/auction/todays-auction`)
         const endDateTime = new Date(auction.endDateTime);
     
         if (startingDateTime <= currentTime && endDateTime >= currentTime) {
-            ongoingAuctions.push(auction);
             populateData(0,auction)
-        } else if (startingDateTime > currentTime) {
-            upcomingAuctions.push(auction);
-            populateData(1,auction)
         }
     }
     
@@ -62,14 +71,18 @@ fetch(`${apiUrl}/auction/todays-auction`)
         var html=`
         <li>
         <h1 class="hid">${element._id}</h1>
+    
         <span>
-        ${extractTimeFromStartingDateTime(element)}
+             ${extractTimeFromStartingDateTime(element)}
         </span>
         <span>
-        ${element.Model}
+            <img src="../assets/image/car1.png" alt="" class="imgs">
         </span>
         <span>
-        ${element.Price}
+           <h1> ${element.Year}</h1>
+           <h1>${element.Model}</h1>
+           <h1>${element.Location}</h1>
+
         </span>
         <span>
        $ ${element.Price}
@@ -77,10 +90,41 @@ fetch(`${apiUrl}/auction/todays-auction`)
         <span>
         ${element.Qualification}
         </span>
-        <span class="book_mark">
+        <span>
             book mark
         </span>
-       </li>
+        </li>
         `
         container.insertAdjacentHTML('beforeend',html)
     }
+
+
+    function uploadImage(data) {
+        var items = document.querySelectorAll(".product_listing li");
+    
+        // Convert NodeList to array for easier iteration
+        var itemsArray = Array.from(items);
+    
+        for (let i = 0; i < itemsArray.length; i++) {
+            const element = itemsArray[i];
+    
+            // Check if the element has a child with class "hid"
+            if (!element.querySelector(".hid")) {
+                continue; // Continue to the next iteration if ".hid" doesn't exist
+            }
+    
+            const hidElement = element.querySelector(".hid");
+            const productId = hidElement.textContent.trim();
+    
+            if (productId === data.productId) {
+                console.log(data); // Display the data received from the backend
+                const imgsElement = element.querySelector(".imgs");
+                if (imgsElement) {
+                    imgsElement.src = data.imageUrl; // Set the src attribute
+                } else {
+                    console.error("No element with class 'imgs' found.");
+                }
+            }
+        }
+    }
+    

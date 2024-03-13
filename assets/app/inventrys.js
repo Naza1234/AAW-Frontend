@@ -1,44 +1,22 @@
-console.log(600);
+console.log("hello word");
 
-fetch(`${apiUrl}/auction/todays-auction`)
+
+fetch(`${apiUrl}/auction/Inventory`)
     .then((response) => {
         return response.json();
     })
     .then((data) => {
         console.log(data); // Display the data received from the backend
-        for (let i = 0; i < data.length; i++) {
-            const element = data[i];
-            checkAuctionStatus(element);
-        }
-      
+       for (let i = 0; i < data.length; i++) {
+        const element = data[i];
+        populateData(element)
+       }
     })
     .catch((error) => {
         console.error('Error:', error);
     });
 
 
-
-
-
-    const ongoingAuctions = [];
-    const upcomingAuctions = [];
-
-    function checkAuctionStatus(auction) {
-        const currentTime = new Date();
-    
-        // Convert startingDateTime and endDateTime strings to Date objects
-        const startingDateTime = new Date(auction.startingDateTime);
-        const endDateTime = new Date(auction.endDateTime);
-    
-        if (startingDateTime <= currentTime && endDateTime >= currentTime) {
-            ongoingAuctions.push(auction);
-            populateData(0,auction)
-        } else if (startingDateTime > currentTime) {
-            upcomingAuctions.push(auction);
-            populateData(1,auction)
-        }
-    }
-    
     function extractTimeFromStartingDateTime(auction) {
         // Parse the startingDateTime string into a Date object
         const startingDateTime = new Date(auction.startingDateTime);
@@ -54,11 +32,10 @@ fetch(`${apiUrl}/auction/todays-auction`)
         return formattedTime;
     }
     
-
+    
    
-   
-    function populateData(ParentNo,element){
-        var container=document.getElementsByClassName("product_listing")[ParentNo]
+    function populateData(element){
+        var container=document.getElementsByClassName("product_listing")[0]
         var html=`
         <li>
         <h1 class="hid">${element._id}</h1>
@@ -72,7 +49,7 @@ fetch(`${apiUrl}/auction/todays-auction`)
         ${element.Price}
         </span>
         <span>
-       $ ${element.Price}
+        ${element.Price}
         </span>
         <span>
         ${element.Qualification}
