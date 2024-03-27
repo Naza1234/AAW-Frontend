@@ -411,11 +411,13 @@ nav  button:last-child{
 }
 
 .vehicul_finder h1.inventry_h1{
-    font-size: 1.5em;
+    font-size: 22px;
+    text-align: center;
+    justify-self: center;
 }
 
 .vehicul_finder p{
-    font-size: 16px;
+    font-size: 14px;
     text-align: center;
 }
 
@@ -470,7 +472,8 @@ nav  button:last-child{
 
 
 .other_thing{
-    width: 100vw;
+    width: 100%;
+    /* padding: 5px; */
     max-width: 800px;
     display: flex;
     flex-direction: column;
@@ -484,10 +487,11 @@ nav  button:last-child{
 
 .other_thing h1{
     font-weight: 400;
-    font-size: 1em;
+    font-size: 16px;
 }
 .other_thing label{
     width: 50%;
+    font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1195,6 +1199,9 @@ nav  button:last-child{
     gap: 5px;
     margin-top: 20px;
 }
+.product_general_details ul.hid{
+    display: none;
+}
 .product_general_details ul li{
     width: 100%;
     display: flex;
@@ -1353,6 +1360,20 @@ nav ul li ul li{
 
 
 @media screen and (max-width  : 800px) {
+    .inventry_h1 {
+        font-size: 20px;
+    }
+     .vehicul_finder .condition{
+         display: grid;
+         width: 100%;
+         max-width: 800px;
+         grid-template-columns: 1fr;
+         gap: 2vw;
+         align-items: center;
+         justify-content: center;
+         margin-top: 2vw;
+     }
+
     .details{
         grid-template-columns: 1fr;
     }
