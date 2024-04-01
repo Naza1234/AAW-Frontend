@@ -69,8 +69,8 @@ for (let j = 0; j < nextButtons.length; j++) {
                     Category :selects[1].value,
                     Price :inputs[5].value,
                     Description :inputs[10].value,
-                    endDateTime : inputs[11].value + " " + inputs[12].value,
-                    startingDateTime:  inputs[13].value + " " + inputs[14].value,
+                    endDateTime : inputs[13].value + " " + inputs[14].value,
+                    startingDateTime: inputs[11].value + " " + inputs[12].value,
                 }
             
             }else{

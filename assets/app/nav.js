@@ -1,6 +1,6 @@
 const winUrl="https://autoauction.space"
-const apiUrl="https://aawserver.onrender.com"
-// const apiUrl="http://localhost:3000"
+// const apiUrl="https://aawserver.onrender.com"
+const apiUrl="http://localhost:3000"
 
 
 
