@@ -33,6 +33,13 @@ console.log(UserId);
 if (!UserId) {
     // window.location=`${winUrl}/pages/loging.html`
 }else{
+    fetch(`${apiUrl}/user/users/${UserId}`)
+.then((response) => {
+return response.json();
+})
+.then((data) => {
+    
+     
     document.getElementsByClassName("top_nav")[0].innerHTML=`
     <div class="logo">
     Auto Auction
@@ -45,17 +52,26 @@ if (!UserId) {
 </div>
 <a href="./Winners.html">
 <div class="my_account logs">
-    <img src="../assets/image/profile-circle.png" alt="">
+    <img src="${data.UserProfileImage}" alt="">
     <h1>
-        my name is this
+        ${data.UserName}
     </h1>
   </div>
 </a>
     `
-}
+
 
 var logs= document.getElementsByClassName("logs")[0]
 
+})
+    
+
+
+.catch((error) => {
+console.error('Error:', error);
+});
+
+}
 if (logs) {
     logs.addEventListener("click",()=>{
         localStorage.setItem("AAWRedLink",window.location)

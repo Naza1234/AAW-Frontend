@@ -482,7 +482,7 @@ body {
     align-self: center;
     width: calc(100% - 10vw);
     border-radius: 20px;
-    background: url(https://s3-alpha-sig.figma.com/img/de62/9c39/41095092577cd78295a7efa891e4a274?Expires=1706486400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=jne6Ub9rLQVBLdycGfzJmJk~mclSFDLndj5QBqRpoxLbSqUt~sWVyXj~BF~9TQ7lGM5VUCt62e-ISNo9IDVY7tBgZeNBpL68FnLCnc13q5PO1k4yud-QD0GEzllU5Kh8iSGZO~hYy8tFYR7sH1AlMK4Z3RgMNkQL1OYhSCdQvGlhmuhvIUi4uj5RkZ-ok8kHjmcB8buoc0h2loWTpNELUktKUANRcZYY-Dk-i8GE4uVA6X4Atn1zGLg4A1Qrk8yw794hoHrIoUV9wGBpgsf3svMGN-LqytT9x5UsiMVHZ8JLd4h9hcGDkvecoQpWNB8k9mqHqN1NxXyma4Y2ij8VMQ__);
+    background: url(../image/Section.png);
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;

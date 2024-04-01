@@ -118,6 +118,8 @@
     height: 50px;
     background-color: #fff;
     border-radius: 5px;
+    object-fit: cover;
+    object-position: center;
 }
 .top_nav .my_account  h1{
     color: #f4f4f4;
@@ -516,9 +518,25 @@ nav  button:last-child{
 .other_thing div:nth-child(5) label select{
     width: 100%;
 }
-
-.other_thing button{
+.other_thing  a{
     margin-top: 30px;
+    max-width: 200px;
+    width: 100%;
+    /* background-color: rgba(0, 128, 0, 0.841); */
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    font-size: 20px;
+    color: #fff;
+    letter-spacing: 1px;
+    border-radius: 5px;
+    align-self: center;
+}
+.other_thing button{
+    width: 100%;
+    cursor: pointer;
     background-color: rgba(0, 128, 0, 0.841);
     height: 40px;
     font-weight: 400;
