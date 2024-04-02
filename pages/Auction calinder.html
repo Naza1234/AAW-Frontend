@@ -110,23 +110,42 @@
       <section class="items" >
        <section>
         <section class="items_list" >
-            <form class="search" style="justify-content: space-between;">
-                <h1>
-                <img src="../assets/image/calendar.png" alt="">  calendar search
-             </h1>
-             <div>starting date: <input type="date"  required></div>
-             <div>ending date date: <input type="date"  required></div>
+            <style>
+                .search{
+                    flex-direction: row;
+                    min-width: 650px;
+                    overflow: auto;
 
-           <div>
-              <button style="padding: 10px;
-              border-radius: 5px;
-              background-color:var(--primary) ;
-              color: #fff;">
-                get Auctions
-              </button>
-           </div>
-         </form>
+                }
+                .search div{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 5px;
+                    border: none;
+                    font-size: 14px;
+                    color: black;
+                    padding: 0;
+                }
+                
+                
+            </style>
          <ul class="product_listing">
+             <form class="search" style="justify-content: space-between;  width: 100%; height: fit-content;">
+                 
+              <div style="align-items: flex-start;">starting date: <input type="date"  required></div>
+              <div style="align-items: flex-start;">ending date date: <input type="date"  required></div>
+ 
+          
+               <button style="padding: 10px;
+               border-radius: 5px;
+               background-color:var(--primary) ;
+               color: #fff;
+               align-self: flex-end;">
+                 get Auctions
+               </button>
+            
+          </form>
             <li class="heading">
                 <span>
                     sale time

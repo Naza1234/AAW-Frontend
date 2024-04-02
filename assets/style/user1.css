@@ -604,7 +604,7 @@ nav  button:last-child{
 }
 
 .headdit img{
-    height: 1.2rem;
+    height: 15px;
     width: auto;
 }   
 
@@ -630,6 +630,7 @@ nav  button:last-child{
     display: flex;
     flex-direction: column;
     gap: 10px;
+    font-size: 16px;
 }
 
 #how_to_buy ul li{
@@ -667,7 +668,7 @@ nav  button:last-child{
 
 .its_here h1,
 .work_floow h1{
-    font-size: 3rem;
+    font-size: 25px;
     color: var(--primary);
     position: relative;
     width: fit-content;
@@ -699,6 +700,7 @@ nav  button:last-child{
 
 .work_floow ul li{
     display: flex;
+    font-size: 16px;
     flex-direction: column;
     align-items: flex-start;
     padding: 10px;
@@ -723,7 +725,7 @@ nav  button:last-child{
 
 
 .frequently_asked_questions h1{
-    font-size: 3rem;
+    font-size: 25px;
     color: var(--primary);
 }
 
@@ -758,7 +760,7 @@ nav  button:last-child{
 
 .frequently_asked_questions ul li span h1{
     color: #7B7B7B;
-    font-size: 1.4rem;
+    font-size: 18px;
     font-weight: 400;
 }
 
@@ -775,7 +777,7 @@ nav  button:last-child{
     order: 2;
 }
 .frequently_asked_questions ul li p{
-     font-size: 1rem;
+     font-size: 14px;
      font-weight: 500;
      padding: 0vw 0vw;
      height: 0px;
