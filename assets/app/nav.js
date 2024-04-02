@@ -1,6 +1,6 @@
 const winUrl="https://autoauction.space"
-const apiUrl="https://aawserver.onrender.com"
-// const apiUrl="http://localhost:3000"
+// const apiUrl="https://aawserver.onrender.com"
+const apiUrl="http://localhost:3000"
 
 
 
@@ -61,7 +61,6 @@ return response.json();
     `
 
 
-var logs= document.getElementsByClassName("logs")[0]
 
 })
     
@@ -72,6 +71,10 @@ console.error('Error:', error);
 });
 
 }
+
+var logs= document.getElementsByClassName("logs")[0]
+
+
 if (logs) {
     logs.addEventListener("click",()=>{
         localStorage.setItem("AAWRedLink",window.location)

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/style/user1.css">
     <link rel="stylesheet" href="./assets/style/style.css">
     <title>Auto Action </title>
 </head>
@@ -10,23 +11,91 @@
 <body>
     
       <section class="body">
-
-      <header>
-
-        <nav>
-            <div class="logo">
-                AutoAuction
+       
+          <header>
+            <div class="top_nav">
+                <div class="logo">
+                     Auto Auction
+                </div>
+              
+    
+                 <a href="./pages/signup.html">
+                    <div class="my_account logs">
+                        <img src="../assets/image/add-user.png" alt="">
+                        <h1>
+                            signup 
+                        </h1>
+                      </div>
+                </a>
             </div>
-           
-                
-                    <div class="logs">
-                        <a href="./pages/loging.html">
-                            <img src="./assets/image/profile-circle.png" alt="">
-                        </a>
-                    </div>
-                
-            
-        </nav>
+              <nav>
+                  <div class="hr" onclick="toggleNav()">
+                      <hr>
+                      <hr>
+                      <hr>
+                  </div>
+                <ul class="nav_it">
+                  <li>
+                      <a href="./pages/how to buy.html">
+                          How it work
+                      </a>
+                  </li>
+                  <li class="drop_down">
+                      Inventory
+                      <ul>
+                          <li>
+                              <a href="./pages/sales lest.html">Sales lest</a>
+                          </li>
+                          <li>
+                              <a href="./pages/vehicle finde.html">vehicle finder</a>
+                          </li>
+                          <li>
+                              <a href="./pages/saved vehicles.html">saved vehicles</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li class="drop_down">
+                      Auctions
+                      <ul>
+                          <li>
+                              <a href="./pages/today auctions.html">today Auctions</a>
+                          </li>
+                          <li>
+                              <a href="./pages/Auction calinder.html">Auction calender</a>
+                          </li>
+                          <li>
+                              <a href="./pages/join auction.html">join auction</a>
+                          </li>
+                      </ul>
+                  </li>
+                  <li class="drop_down">
+                    Services & support 
+                      <ul>
+                          <li>
+                             <a href="./pages/how to buy.html#how_to_buy">how to buy</a>
+                          </li>
+                          <li>
+                              <a href="./pages/common questions.html">common questions</a>
+                          </li>
+                          <li>
+                              <a href="./pages/contact us.html">contact us</a>
+                          </li>
+                      </ul>
+                  </li>
+              </ul>
+             <a href="./pages/contact us.html">
+              <button>
+                  help center
+              </button>
+             </a>
+              <a href="./pages/add_cars.html">
+                  <button>
+                      sell  your car
+                  </button>
+              </a>
+              </nav>
+            </header>
+      <section  class="head">
           <section class="header">
             <div class="write">
                 <p>
@@ -37,7 +106,7 @@
                     Real Time <br>
                     Bidding
                 </h1>
-                <p>
+                <p style="color: #ffffff5b;">
                     Thousands of Vehicles for Sale <br> Every Day, We
                     have just the <br> right one for you.
                 </p>
@@ -45,11 +114,15 @@
                     Get Started
                 </a>
             </div>
-            <img src="./assets/image/car_logo.png" alt="">
+            <!-- <img src="./assets/image/car_logo.png" alt=""> -->
         </section>
         <img src="https://s3-alpha-sig.figma.com/img/d4e5/adfd/9a16d2a57c7062d5e4ac93d8b001a0f0?Expires=1706486400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=LMfJwzUxzEA1g7OMPcNVfPgj~J2o-FIlYMIHVjTMGCUywNfh5KmZrFixCzTrhq0AhdhFBZjORcRpR9Z341glEvQ~8JMqsAZ-DUkHh2Fni1JgkmSH3Ue2FrBQ3Sb~fJ4nXxRyDoqi6egeUh6rmEC-Gd~yiSrSMGxzqgFQGJxEOkw2OjXarpN0CSIXXsOTZDnELZafF7Kty4Op7iu1--~rReHP8vkTX5LCoQWItOluXo8Sv5b3DFM7-NqVGKMMNnl34s-VmbR8-8mKyTCKeSd7z~t9v137ZSR2dmjkxNhRoMGO33wluHrtWJMTYYOSRVLJxKvts3WhGecMgJgjW7bVzA__" alt="" class="apsolut">
-      </header>
+      </section>
 
+
+
+
+    <br> <br>
     <section class="how_it_works">
         
         <h1>
@@ -62,7 +135,7 @@
         <div class="wrap">
                <div>
                <a href="./pages/signup.html">
-                <img src="https://s3-alpha-sig.figma.com/img/ab55/cbf6/8394570f131c3f78069c772efdd60408?Expires=1706486400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=qJ-xnL8oO2sYVj43wpBMN0LTrWhkzZWgHgESNZUQcQCp5bj36F7uDAvTsVfBQlgT~Gb31R766vNEBt3-Y6Zx53EP-Q6ypWTm70STGJZvl1yDJnLNXZwD1gp7ua7ALYA734MSWIVmcws6wmsxWSRNSfWwOKsX1XPwg4MQSIvBs1ZTkj7EtxAI1dAKtxBe8caAtO3y6zkeTuWMYaJF24No3QQ2jKhVLRUOhj3jIYcUJ2~HMQFDA2DSZ1uQHC6cIzXB1bMsEe0KaIaartXmpR6Rr7UIw1k5dq3fJ6vHBlJTtWWHcNzT7NbiR~D24ZJx5e8NsAQh~bFH6wkzCK75pJP1GA__" alt="">
+                <img src="./assets/image/how1.png.png" alt="">
                </a>
                  <h2>
                     Sign Up
@@ -72,7 +145,7 @@
                  </h3>
             </div>
                <div>
-               <img src="https://s3-alpha-sig.figma.com/img/dc50/fe38/484c7d718b64730c3b2907b7f3f20df1?Expires=1706486400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=AHlMH~0TXMLUDkjI5ReNiXrOGMu25H4ItD9lfC6Ku8q-aY4E1yNNYa99paaPCnuKZvoz3n3QDb1QyUZm8WYu-0dA5amsZahjl0Y2fScySdQ~hbill2wKXcZU-eYQatnmaxWaDq-XrdtAp1Z4cg8DbvR3RxVyTZ0JvUvKW9oibNJVB25jTsjuYsIhTDU4~7Pdgu2sKKKUdLJKPAbsNGJXQ4EBK7IbLFcZu959lJyvx9kFzbU9Em9JjVo-H8691uD2ARUtAEZKxcd2qB4ARD7ThUTIt3roGKsfMKSY1k6iapTqKRiKY8tnltdutuqXUozRSGUe-~horz9H-z1sNCpGkw__" alt="">
+               <img src="./assets/image/how2.png.png" alt="">
                  <h2>
                     Bid
                  </h2>
@@ -81,7 +154,7 @@
                  </h3>
             </div>
                <div>
-               <img src="https://s3-alpha-sig.figma.com/img/4320/7695/ac85dcfe0678bd02587e873be18f6cd6?Expires=1706486400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=qa2-FWH4vrriIBd2DlmSQ3-~l5OhKxxd~Sh5EXajq5l9~D2c4MBqG0Kdult9CsZN~tzEUP3o1fIw2oP7QmatPWKHK79qIvcNYmE1gn5MUYTHGspwCxLu4dkYslJsvbRwfov3hGdIaBZKFPh8wGQfbanthvTQ70M4-JhiEAkM24nj~LpNrLKaqwFaWzkvG3Se~V0nqw~FpH4zCDeYf-Y39qNp3MNkUXxZkMR3M8exKT6pyrUZXmPWMszcuVNeuk7daCgz3tTqsdifbqAMamSsBwaxaBEAk-CLWjit~cBYa7nK2ci-KUo8267Vy60gyCZLk7mOW6ym9eFc~jaIk0UhJg__" alt="">
+               <img src="./assets/image/how3.png.png" alt="">
                  <h2>
                     Win
                  </h2>
@@ -156,10 +229,10 @@
             AutoAuction
         </div>
         <div class="card">
-            <img src="https://s3-alpha-sig.figma.com/img/fcda/9256/2e9b3739e42b85417497cd9447143623?Expires=1706486400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=IMMN4LzdfXgqtAxus~qWRqjeXx1~xOv5JGE0CR7S-Ygk-Pza~90tuoKCt8uSyvfluDAxI8iXE8Uan56w3V1ecV6eHV~E3lNLQ03OChGW1SU2mFRB~T-2oZyCnqQXW0pzSGQffCvpTXEv6vYjPIcebbzN4JAnwBpXxTctupvpMTj-vZGLIuBPFzuuAZihfkFiygTsJIgiw7v6A87IeVG7PF7-QqnEo5AB1gYf8f1of2TX3xEcukl1NzxKnBs1YwKJEEWTh8hM~VsGVcFC80fyqFk4ID4RL0nXRRhICQUIJl-DHz3IVAoo9qu0trOzf60filvAPEOEH54Bv5j9Xylixw__" alt="">
-            <img src="https://s3-alpha-sig.figma.com/img/aa0e/005f/b618f4ccb6cfc0dca0522aea735fe137?Expires=1706486400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=JzJVNctKqUa3i7LsZzWNtrtL81UXhNhlNxRGvaulAEcD90NRDhgJofuQ6bMJo9sacAyE2plaTCMTPOTKao2kVY4QdILs2AAOi1DkIJzbs6gN6emyo4Bv~B0psQYgKa7XsjABSEL5E7r09tQ6w4yB1Oab0fnUtuQF12itOGwxkKt~6ogDzWW4lacZSmvFUZaCreSN~qEgNbbbK6WdKx0agbG5vgBhFDNybuEVgHE~ryesqQx60sUVgLSahdCFBo59hyL98oHP~Tx~25cGMzTmlWOuSIbCWFs8IDnG86YlV9S~rIy-895RnuFiP-3HsRBwEqtNxuJmfWRB~5SohMbLbg__" alt="">
-            <img src="https://s3-alpha-sig.figma.com/img/eddc/a45f/e495c69b852378705c6825d6c0ca9702?Expires=1706486400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=YX2ajFZJJfPr6RYz7XYZZZvHOuRqSXk6zS66G6gH6quh3CBXvQAyaL3yEpRNFeQIMtkuFcYhtjanvxjRUZh0slfx213Ds2E~ba35nd3GXY~y8KaZItOr2CU5JP-UNiW3RZhpvhVhq5ml5n~0uh5EI3cNfOJ7DbxvPwyClcrJmRAKlBFrXGfERE8C5ryaymsMkURHZ9F0llws0aQ94H8FgIugmoa6oZ~TmI1ZX6LWE0BwGVaf8i~08ogMmg04yzf3bZ9DWJ8JwGRt2NSRpptT2NxwApX~RxgMUJVJOILD95FO2ik0hIeDFxgCTcrIQ8eK4eh1-a6bIzB2lECPVVgWBQ__" alt="">
-            <img src="https://s3-alpha-sig.figma.com/img/b334/7b15/bfcdebaf601de78d13639a025445997d?Expires=1706486400&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=gg3ZceHpyWKsGbhz9E0Gxl7jEsPgqzW0kMQP7ztryYxSv9De6AN-S4BZd8l7zOzsNtS-UM80HHbp9txtVqYwblZA8GsE~mXM2~DqRhOBHSZN8koswTU203h2sy-Vmc4-atIyikIOO32gYFRGm28X-9r9AfaJ2IYz9DoPEAub3bqlByOksRiPPlS2yGgRATjzkp3gJqn5BUKXzyXSu-EDJAZUIek7a6JFM7OCmb3U1ekTW1Tctvz3RKT97YhxK2p6k6qER1VcPbRlTkCRtURFZkJ85mkLeUhaskpg-yMzR6aWCQXionPgmL84rTZOp7Pxr~RIG82d5GIkfQcn6rmcGg__" alt="">
+            <img src="./assets/image/List → Item → Link → discover.png.png" alt="">
+            <img src="./assets/image/List → Item → Link → mastercard.png.png" alt="">
+            <img src="./assets/image/List → Item → Link → paypal.png.png" alt="">
+            <img src="./assets/image/List → Item → Link → visa.png.png" alt="">
         </div>
         <p>
             AutoAuction © Copyright 2024 
@@ -172,5 +245,6 @@
         <div class="lds-facebook"><div></div><div></div><div></div></div>
        </section>
     <script src="./assets/app/index.js"></script>
+    <!-- <script src="./assets/app/nav.js"></script> -->
 </body>
 </html>

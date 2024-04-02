@@ -66,7 +66,10 @@ fetch(`${apiUrl}/products/active-auction-products`)
 return response.json();
 })
 .then((data) => {
-    populateActiveAuction(data)
+    if(data[0]=== !null){
+        populateActiveAuction(data)
+    }
+    console.log(data);
     uploadImg()
 }
 )
@@ -103,7 +106,7 @@ console.error('Error:', error);
 
 function populateData(data){
     
-    
+    console.log(data);
     
     
     
@@ -111,10 +114,11 @@ function populateData(data){
     
     for (let i = 0; i < data.length; i++) {
         const element = data[i];
-        if (element.category === "auction product " && !element.productSold) {
+        if (element.Category === "Auction Product" && !element.productSold) {
             AuctionProducts.push(element)
         }
     }
+    console.log(AuctionProducts);
     var auctionCount=0
     var auctionLet
     AuctionProducts.length >6 ? auctionLet=6 : auctionLet = AuctionProducts.length
@@ -128,7 +132,7 @@ function populateData(data){
                 <img src="./assets/image/car.png" alt="">
                 <div class="dit">
                     <h2>
-                        ${AuctionProducts[auctionCount].productName}
+                        ${AuctionProducts[auctionCount].Make + " " + AuctionProducts[auctionCount].Model + " " + AuctionProducts[auctionCount].Year}
                     </h2>
                     
                         <div class="dit">
@@ -147,7 +151,7 @@ function populateData(data){
                                     Current Bid
                                 </h1>
                                 <p class="price">
-                               $ ${AuctionProducts[auctionCount].price.toLocaleString()}
+                               $ ${AuctionProducts[auctionCount].Price.toLocaleString()}
                                 </p>
                             </span>
                         </div>
@@ -174,10 +178,11 @@ function populateData(data){
     
     for (let i = 0; i < data.length; i++) {
         const element = data[i];
-        if (element.category === "one time sails product" && !element.productSold) {
+        if (element.Category === "One Time Sails Product" && !element.productSold) {
             OneTimeSaleProducts.push(element)
         }
     }
+    console.log(OneTimeSaleProducts);
     var oneTimeSaleCount=0
     var oneTimeSaleLet
     OneTimeSaleProducts.length >6 ? oneTimeSaleLet=6 : oneTimeSaleLet = OneTimeSaleProducts.length
@@ -191,7 +196,7 @@ function populateData(data){
                 <img src="./assets/image/car.png" alt="">
                 <div class="dit">
                     <h2>
-                        ${OneTimeSaleProducts[oneTimeSaleCount].productName}
+                        ${OneTimeSaleProducts[oneTimeSaleCount].Make + " " + OneTimeSaleProducts[oneTimeSaleCount].Model + " " + OneTimeSaleProducts[oneTimeSaleCount].Year}
                     </h2>
                     
                         <div class="dit">
@@ -210,7 +215,7 @@ function populateData(data){
                                     price
                                 </h1>
                                 <p>
-                               $ ${OneTimeSaleProducts[oneTimeSaleCount].price.toLocaleString()}
+                               $ ${OneTimeSaleProducts[oneTimeSaleCount].Price.toLocaleString()}
                                 </p>
                             </span>
                         </div>
@@ -225,7 +230,7 @@ function populateData(data){
                 container.insertAdjacentHTML('beforeend',html)   
             
             oneTimeSaleCount ++
-            console.log(oneTimeSaleCount);
+           
         }
 
 
@@ -247,26 +252,27 @@ function populateActiveAuction(data){
     for (let i = 0; i < data.length; i++) {
         const element = data[i];
           
+     if(!null){
         var container=document.getElementsByClassName("trnding_wrap")[0]
         var html=`
         <div class="item p_man">
         <img src="./assets/image/car.png" alt="">
                <div class="dit">
             <h1>
-            ${element.productName}
+            ${element.Make + element.Model + element.Year}
             </h1>
             <h2>
                 <svg xmlns="http://www.w3.org/2000/svg" width="18" height="22" viewBox="0 0 18 22" fill="none">
                     <path opacity="0.4" d="M17.6201 7.45C16.5701 2.83 12.5401 0.75 9.0001 0.75C9.0001 0.75 9.0001 0.75 8.9901 0.75C5.4601 0.75 1.4201 2.82 0.370095 7.44C-0.799905 12.6 2.3601 16.97 5.2201 19.72C6.2801 20.74 7.6401 21.25 9.0001 21.25C10.3601 21.25 11.7201 20.74 12.7701 19.72C15.6301 16.97 18.7901 12.61 17.6201 7.45Z" fill="#A7A7A7"/>
                     <path d="M9.0001 12.46C10.7398 12.46 12.1501 11.0497 12.1501 9.31C12.1501 7.5703 10.7398 6.16 9.0001 6.16C7.2604 6.16 5.8501 7.5703 5.8501 9.31C5.8501 11.0497 7.2604 12.46 9.0001 12.46Z" fill="white"/>
                   </svg>
-                  ${element.location}
+                  ${element.Location}
             </h2>
             <h3>
                 <b>
                     prices : 
                 </b>
-                <h3 class="price"> $ ${element.price.toLocaleString()}</h3>
+                <h3 class="price"> $ ${element.Price.toLocaleString()}</h3>
             </h3>
             <h3>
                 <b>
@@ -283,6 +289,7 @@ function populateActiveAuction(data){
         `
 
         container.insertAdjacentHTML('beforeend',html)   
+     }
     }
 
     ButtonClick()
@@ -304,7 +311,7 @@ function ButtonClick(){
             if (!UserId) {
                 window.location=`${winUrl}/pages/loging.html`
             }else{
-                window.location=`${winUrl}/pages/Auction_house.html?r=${id}`
+                window.location=`${winUrl}/pages/detalis.html?r=${id}`
             }
             
         })
@@ -319,7 +326,7 @@ function ButtonClick(){
             if (!UserId) {
                 window.location=`${winUrl}/pages/loging.html`
             }else{
-                window.location=`${winUrl}/pages/buy_now.html?r=${id}`
+                window.location=`${winUrl}/pages/detalis.html?r=${id}`
             }
             
         })
@@ -378,6 +385,94 @@ function uploadImg(){
     }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+function toggleNav(){
+    document.getElementsByClassName("nav_it")[0].classList.toggle("see_it")
+}
+
+var item =document.getElementsByClassName("drop_down")
+
+for (let i = 0; i < item.length; i++) {
+    const element = item[i];
+    element.addEventListener("click",(e)=>{
+       var targetElement = e.target
+       var item2=document.getElementsByClassName("drop_down")
+       for (let i = 0; i < item2.length; i++) {
+        const element = item2[i].getElementsByTagName("ul")[0].classList.remove("active");
+        
+       }
+       element.getElementsByTagName("ul")[0].classList.add("active")
+       setTimeout(() => {
+        targetElement.getElementsByTagName("ul")[0].classList.remove("active")
+       }, 2500);
+    })
+}
+
+
+
+
+
+
+
+
+console.log(UserId);
+
+if (!UserId) {
+    // window.location=`${winUrl}/pages/loging.html`
+}else{
+    fetch(`${apiUrl}/user/users/${UserId}`)
+.then((response) => {
+return response.json();
+})
+.then((data) => {
+    
+     
+    document.getElementsByClassName("top_nav")[0].innerHTML=`
+    <div class="logo">
+    Auto Auction
+</div>
+
+<a href="./Winners.html">
+<div class="my_account logs">
+    <img src="${data.UserProfileImage}" alt="">
+    <h1>
+        ${data.UserName}
+    </h1>
+  </div>
+</a>
+    `
+
+
+    
+})
+
+
+
+.catch((error) => {
+    console.error('Error:', error);
+});
+
+}
+var logs= document.getElementsByClassName("logs")[0]
+
+if (logs) {
+    logs.addEventListener("click",()=>{
+        localStorage.setItem("AAWRedLink",window.location)
+    })
+}
+
 
 
 
