@@ -258,7 +258,7 @@ function populateData(data,dataImg,dataOtherImg,carDetails,garageDetails,carPric
    location : 
   </h2>
   <h2>
-   g${data. Location}
+   ${data. Location}
   </h2>
 </span>
 
