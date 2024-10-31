@@ -447,7 +447,7 @@ return response.json();
         Auto Auction
     </div>
   
-    <a href="./Winners.html">
+    <a href="./pages/Winners.html">
     <div class="my_account logs">
         <img src="${data.UserProfileImage}" alt="">
         <h1>
