@@ -1,387 +1,417 @@
-// console.log("starts");
+// Elements selectors
+const nextButtons = document.getElementsByClassName("button");
+const inputs = document.querySelectorAll("form input");
+const selects = document.querySelectorAll("form select");
+const addButtons = document.getElementsByClassName("button_add");
+const fileInput = document.querySelector("input.image_back");
 
-var nextButtons=document.getElementsByClassName("button")
-var inputs=document.querySelectorAll("form input")
-var  selects=document.querySelectorAll("form select")
-// console.log(nextButtons,inputs);
+let params = {
+    userId: UserId,
+    Make: "",
+    Model: "",
+    OdoMeter: "",
+    Year: "",
+    Location: "",
+    Qualification: "",
+    Category: "",
+    Price: "",
+    Description: "",
+    endDateTime: "",
+    startingDateTime: "",
+};
 
-var params={
-    userId:"userId",
-    Make : "Make",
-    Model : "Model",
-    OdoMeter :" OdoMeter",
-    Year : "Year",
-    Location :" Location",
-    Qualification : "Qualification",
-    Category : "Category",
-    Price :" Price",
-    Description :" Description",
-    endDateTime : "",
-    startingDateTime: "{}",
-}
+let carDetails = [];
+let garageDetails = [];
+let productImages = [];
 
+// Navigation handling for next buttons
 for (let j = 0; j < nextButtons.length; j++) {
-    const element = nextButtons[j]
-    element.addEventListener("click",(e)=>{
-        var input=element.parentElement.getElementsByTagName("input")
-        // console.log(j);
-        var inputs=document.querySelectorAll("form input")
-        var  selects=document.querySelectorAll("form select")
-        if (element.parentElement.getElementsByTagName("input").length===0) {
-            document.querySelectorAll(".list ul li")[j].classList.remove("active")
-            document.querySelectorAll(".list ul li")[j+1].classList.add("active")
-            nextButtons[j].parentElement.classList.add("hid")
-            nextButtons[j+1].parentElement.classList.remove("hid")
-
-            params={
-                userId:UserId,
-                Make : inputs[0].value,
-                Model : inputs[1].value,
-                OdoMeter :inputs[2].value,
-                Year : inputs[3].value,
-                Location :inputs[4].value,
-                Qualification : selects[0].value,
-                Category :selects[1].value,
-                Price :inputs[5].value,
-                Description :inputs[10].value,
-                startingDateTime : inputs[11].value + "" + inputs[12].value,
-                endDateTime:  inputs[13].value + "" + inputs[14].value,
-            }
+    nextButtons[j].addEventListener("click", () => {
+        const inputElements = nextButtons[j].parentElement.getElementsByTagName("input");
         
+        // Check if any input value is present
+        if (Array.from(inputElements).some(input => input.value)) {
+            switchSteps(j);
+            updateParams();
+        } else if (inputElements.length === 0) {
+            switchSteps(j);
+            updateParams();
         }
-        for (let i = 0; i < input.length; i++) {
-            const element = input[i].value;
-             
-            if(element){
-                document.querySelectorAll(".list ul li")[j].classList.remove("active")
-                document.querySelectorAll(".list ul li")[j+1].classList.add("active")
-                nextButtons[j].parentElement.classList.add("hid")
-                nextButtons[j+1].parentElement.classList.remove("hid")
-               
-                params={
-                    userId:UserId,
-                    Make : inputs[0].value,
-                    Model : inputs[1].value,
-                    OdoMeter :inputs[2].value,
-                    Year : inputs[3].value,
-                    Location :inputs[4].value,
-                    Qualification : selects[0].value,
-                    Category :selects[1].value,
-                    Price :inputs[5].value,
-                    Description :inputs[10].value,
-                    endDateTime : inputs[13].value + " " + inputs[14].value,
-                    startingDateTime: inputs[11].value + " " + inputs[12].value,
-                }
-            
-            }else{
-
-               
-            }
-            
-        }
-    })
+    });
 }
 
+function switchSteps(index) {
+    const listItems = document.querySelectorAll(".list ul li");
+    listItems[index].classList.remove("active");
+    listItems[index + 1].classList.add("active");
+    nextButtons[index].parentElement.classList.add("hid");
+    nextButtons[index + 1].parentElement.classList.remove("hid");
+}
 
-var addButtons=document.getElementsByClassName("button_add")
-var carDetails=[]
-var garageDetails=[]
+function updateParams() {
+    params = {
+      userId: UserId,
+        Make: inputs[0].value,
+        Model: inputs[1].value,
+        OdoMeter: inputs[2].value,
+        Year: inputs[3].value,
+        Location: inputs[4].value,
+        Qualification: selects[0].value,
+        Category: selects[1].value,
+        Price: inputs[5].value,
+        Description: inputs[10].value,
+        startingDateTime: `${inputs[11].value} ${inputs[12].value}`,
+        endDateTime: `${inputs[13].value} ${inputs[14].value}`,
+    };
+}
+
+// Handling add buttons for car/garage details
 for (let i = 0; i < addButtons.length; i++) {
-    const element = addButtons[i];
-    element.addEventListener("click",()=>{
-
-        var input =element.parentElement.getElementsByTagName("input")
+    addButtons[i].addEventListener("click", () => {
+        const input = addButtons[i].parentElement.getElementsByTagName("input");
+        
+        let detailParams = {
+            productId: "",
+            detailTitle: input[0].value,
+            detailsInformation: input[1].value,
+        };
 
         if (i === 0) {
-            var params={
-                productId:"",
-                detailTitle:input[0].value,
-                detailsInformation:input[1].value,
-            }
-            carDetails.push(params)
-            populateDetails(carDetails,0)
-        }else{
-            var params={
-                productId:"",
-                detailTitle:input[0].value,
-                detailsInformation:input[1].value,
-            }
-            garageDetails.push(params)
-            populateDetails(garageDetails,1)
+            carDetails.push(detailParams);
+            populateDetails(carDetails, 0);
+        } else {
+            garageDetails.push(detailParams);
+            populateDetails(garageDetails, 1);
         }
-        // console.log(carDetails,garageDetails);
+    });
+}
 
-    })
+function populateDetails(arrayName, No) {
+    const container = document.querySelectorAll("div section ul")[No];
+    container.innerHTML = ""; // Clear existing content
+
+    arrayName.forEach(element => {
+        const html = `
+        <h2>
+            <b>${element.detailTitle}: </b>
+            ${element.detailsInformation}
+        </h2>`;
+        container.insertAdjacentHTML("beforeend", html);
+    });
+}
+
+// Handling product image uploads and previews
+fileInput.addEventListener("change", (e) => {
+    const input = e.target.files[0];
+
+    if (productImages.length === 20) {
+        productImages.pop(); // Limit the array to 20 images
+    }
+
+    productImages.unshift(input);
+    updateImagePreviews();
+});
+
+function updateImagePreviews() {
+    const imageContainer = document.getElementsByClassName("image_container")[0];
+    imageContainer.innerHTML = ""; // Clear the container
+
+    productImages.slice(0, 20).forEach((file, index) => {
+        const imageSrc = URL.createObjectURL(file);
+        const html = `
+        <div class="image_box" data-index="${index}">
+            <img src="${imageSrc}" alt="">
+            <div class="pop_edit">
+                <img src="../assets/image/delete.png" alt="Delete" class="delete_icon">                             
+            </div>
+        </div>`;
+        imageContainer.insertAdjacentHTML("beforeend", html);
+    });
+
+    // Add event listeners for delete icons
+    const deleteIcons = document.getElementsByClassName('delete_icon');
+    Array.from(deleteIcons).forEach((icon) => {
+        icon.addEventListener('click', function () {
+            const index = this.closest('.image_box').getAttribute('data-index');
+            productImages.splice(index, 1); // Remove the image from the array
+            updateImagePreviews(); // Re-render the previews
+        });
+    });
+}
+
+function convertFileToBase64(file) {
+  return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+  });
+}
+
+function convertBase64ToFile(base64String, filename) {
+  const arr = base64String.split(',');
+  const mime = arr[0].match(/:(.*?);/)[1];
+  const bstr = atob(arr[1]);
+  const n = bstr.length;
+  const u8arr = new Uint8Array(n);
+
+  for (let i = 0; i < n; i++) {
+      u8arr[i] = bstr.charCodeAt(i);
+  }
+
+  return new File([u8arr], filename, { type: mime });
+}
+
+function generateImageFileName() {
+  const now = new Date();
+  const date = now.toISOString().split('T')[0];
+  const time = now.toTimeString().split(' ')[0].replace(/:/g, '-');
+  const microseconds = String(now.getMilliseconds()).padStart(3, '0'); // Milliseconds treated as microseconds
+  return `${date}_${time}-${microseconds}`;
+}
+
+// Create a function to convert all images to Base64
+async function convertImagesToBase64(images) {
+  // Use Promise.all to convert all images concurrently
+  return await Promise.all(images.map(async (image) => {
+      const base64Image = await convertFileToBase64(image);
+      return { file: base64Image, uploaded: false };
+  }));
 }
 
 
-function populateDetails(arrayName,No){
-  var container=document.querySelectorAll("div section ul")[No]
-  document.querySelectorAll("div section ul")[No].innerHTML=""
-  for (let i = 0; i < arrayName.length; i++) {
-    const element = arrayName[i];
-    var html=`
-    <h2>
-    <b>${element.detailTitle}: </b>
-    ${element.detailsInformation}
-    </h2>
-    `
-    container.insertAdjacentHTML("beforeend",html)
+document.getElementsByTagName("form")[0].addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const fileInput = inputs[15].files[0]; // Make sure 'inputs' is defined correctly
+  
+  // Convert file to Base64
+  const coverImageBase64 = await convertFileToBase64(fileInput);
+   // Convert product images
+   const convertedProductImages = await convertImagesToBase64(productImages);
+  const formData = {
+      params: { ...params, uploaded: false },
+      productId: "",
+      coverImage: {
+          file: coverImageBase64,
+          uploaded: false
+      },
+      carDetails: carDetails.map(detail => ({ ...detail, uploaded: false })),
+      garageDetails: garageDetails.map(detail => ({ ...detail, uploaded: false })),
+      productImages: convertedProductImages,
+  };
+
+ 
+
+  // Store the formData in local storage
+  localStorage.setItem("formData", JSON.stringify(formData));
+
+
+  // Call upload function
+  uploadProductInfo();
+});
+
+async function uploadProductInfo() {
+  const popup = document.getElementsByClassName("pop")[0];
+  popup.classList.remove("hid");
+  popup.innerHTML = `
+      <div class="dit">
+          <div class="lds-facebook"><div></div><div></div><div></div></div>
+          <h1>Adding product</h1>
+      </div>`;
+
+  const storedData = JSON.parse(localStorage.getItem("formData")) || {};
+
+  if (!storedData.params || storedData.params.uploaded) {
+      console.log("Product parameters have already been uploaded.");
+      return;
+  }
+
+  const params = { ...storedData.params, uploaded: false };
+
+  const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(params),
+  };
+
+  try {
+      const response = await fetch(`${apiUrl}/products/products`, requestOptions);
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      const data = await response.json();
+      const productId = data._id;
+
+      storedData.productId = productId;
+      storedData.params.uploaded = true;
+      localStorage.setItem("formData", JSON.stringify(storedData));
+      popup.classList.add("hid");
+      await uploadProductCoverImage(productId);
+      await uploadProductImages(productId);
+      await uploadCarDetails(productId);
+      await uploadGarageDetails(productId);
+  } catch (error) {
+      console.error('Error during product upload:', error);
+  }
+}
+
+async function uploadProductCoverImage(productId) {
+  const popup = document.getElementsByClassName("pop")[0];
+  popup.classList.remove("hid");
+  const storedData = JSON.parse(localStorage.getItem("formData")) || {};
+  const params = storedData.coverImage || {};
+
+  if (params.uploaded) {
+      console.log("Cover image has already been uploaded.");
+      return;
+  }
+
+  const formData = new FormData();
+  formData.append("productId", productId);
+  const file = await convertBase64ToFile(params.file, generateImageFileName());
+  formData.append("imageUrl", file);
+
+  try {
+      const response = await fetch(`${apiUrl}/productImage/product-images`, {
+          method: 'POST',
+          body: formData,
+      });
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      params.uploaded = true;
+      localStorage.setItem("formData", JSON.stringify(storedData));
+      popup.classList.add("hid");
+      console.log("Cover image uploaded successfully.");
+  } catch (error) {
+      console.error('Error uploading cover image:', error);
+  }
+}
+
+async function uploadProductImages(productId) {
+  const popup = document.getElementsByClassName("pop")[0];
+  popup.classList.remove("hid");
+  const storedData = JSON.parse(localStorage.getItem("formData"));
+  const imagesToUpload = storedData.productImages.filter(img => !img.uploaded);
+
+  for (const [index, image] of imagesToUpload.entries()) {
+      const formData = new FormData();
+      formData.append("productId", productId);
+      const file = await convertBase64ToFile(image.file, generateImageFileName());
+      formData.append("imageUrl", file);
+      popup.classList.remove("hid");
+      try {
+          const response = await fetch(`${apiUrl}/OtherImage/OtherImage`, {
+              method: 'POST',
+              body: formData
+          });
+          if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+          image.uploaded = true;
+          localStorage.setItem("formData", JSON.stringify(storedData));
+          const popup = document.getElementsByClassName("pop")[0];
+          popup.classList.add("hid");
+      } catch (error) {
+          console.error(`Error uploading image ${index}:`, error);
+      }
+  }
+}
+
+async function uploadCarDetails(productId) {
+  const popup = document.getElementsByClassName("pop")[0];
+  popup.classList.remove("hid");
+  const storedData = JSON.parse(localStorage.getItem("formData"));
+  const carDetailsToUpload = storedData.carDetails.filter(detail => !detail.uploaded);
+
+  const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(carDetailsToUpload.map(detail => ({ ...detail, productId }))),
+  };
+
+  try {
+      const response = await fetch(`${apiUrl}/car-details/car-details`, requestOptions);
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      carDetailsToUpload.forEach(detail => {
+          detail.uploaded = true;
+      });
+      localStorage.setItem("formData", JSON.stringify(storedData));
+      const popup = document.getElementsByClassName("pop")[0];
+      popup.classList.add("hid");
+  } catch (error) {
+      console.error('Error uploading car details:', error);
+  }
+}
+
+async function uploadGarageDetails(productId) {
+  const popup = document.getElementsByClassName("pop")[0];
+  popup.classList.remove("hid");
+  const storedData = JSON.parse(localStorage.getItem("formData"));
+  const garageDetailsToUpload = storedData.garageDetails.filter(detail => !detail.uploaded);
+
+  const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(garageDetailsToUpload.map(detail => ({ ...detail, productId }))),
+  };
+
+  try {
+      const response = await fetch(`${apiUrl}/garage-details/garage-details`, requestOptions);
+      if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+      garageDetailsToUpload.forEach(detail => {
+          detail.uploaded = true;
+      });
+      localStorage.setItem("formData", JSON.stringify(storedData));
+      const popup = document.getElementsByClassName("pop")[0];
+      popup.classList.add("hid");
+  } catch (error) {
+      console.error('Error uploading garage details:', error);
   }
 }
 
 
-var productImage=[]
 
+// On page load, check for existing data in local storage
+window.onload = () => {
+  const storedData = JSON.parse(localStorage.getItem("formData")) || {};
 
+  // Initialize a flag to track if any uploads are remaining
+  let remainingUploads = false;
 
-document.getElementsByClassName("button_add_image")[0].addEventListener("click",(e)=>{
-var btn = e.target
-var input=btn.parentElement.getElementsByTagName("input")[0].files[0];
+  // Check if product info needs to be uploaded
+  if (storedData.params?.uploaded === false) {
+      uploadProductInfo();
+      remainingUploads = true; // Mark as remaining upload
+  } else {
+      // Check cover image upload
+      if (storedData.coverImage?.uploaded === false) {
+          uploadProductCoverImage(storedData.productId);
+          remainingUploads = true; // Mark as remaining upload
+      }
 
+      // Check product images upload
+      if (storedData.productImages?.some(img => img.uploaded === false)) {
+          uploadProductImages(storedData.productId);
+          remainingUploads = true; // Mark as remaining upload
+      }
 
+      // Check car details upload
+      if (storedData.carDetails?.some(detail => detail.uploaded === false)) {
+          uploadCarDetails(storedData.productId);
+          remainingUploads = true; // Mark as remaining upload
+      }
 
-        // Clear the previously selected files if needed
-if (productImage.length === 20) {
-    productImage.pop(); // Remove the oldest file
-}
+      // Check garage details upload
+      if (storedData.garageDetails?.some(detail => detail.uploaded === false)) {
+          uploadGarageDetails(storedData.productId);
+          remainingUploads = true; // Mark as remaining upload
+      }
+  }
 
-// Add the new files to the selectedFiles array
+  // Alert if there are remaining uploads
+  if (remainingUploads) {
+      alert("Continuing upload of remaining data...");
+      const popup = document.getElementsByClassName("pop")[0];
+      popup.classList.remove("hid");
+  }else{
+    const popup = document.getElementsByClassName("pop")[0];
+    popup.classList.add("hid");
+  }
+};
 
-    productImage.unshift(input); // Add to the beginning of the array
-    
-
-   
-    updateImagePreviews()
-})
-
-
-function updateImagePreviews() {
-    // const imagePreviews = document.getElementsByClassName('imagePreviews');
-    const ImageContainer=document.getElementsByClassName("image_container")[0]
-    ImageContainer.innerHTML=""
-
-    for (let i = 0; i < productImage.length; i++) {
-        if (i >= 20) {
-            break; // Display up to 5 images only
-        }
-       
-        const imageSrc = URL.createObjectURL(productImage[i]);
-        var html=` <img src="${imageSrc}" alt="" >`
-        ImageContainer.insertAdjacentHTML('beforeend',html)
-    }
-}
-
-
-
-
-
-
-document.getElementsByTagName("form")[0].addEventListener("submit",(e)=>{
-   e.preventDefault()
-//   console.log(params);
-//   console.log(carDetails);
-//   console.log(garageDetails);
-//   console.log(inputs[15].files[0]);
-//   console.log(productImage);
-
-document.getElementsByClassName("pop")[0].classList.remove("hid")
-document.getElementsByClassName("pop")[0].innerHTML=`
-<div class="dit">
-    <div class="lds-facebook"><div></div><div></div><div></div></div>
-    <h1>
-        Adding product
-    </h1>
-</div>
-`
-
-  const requestOptions = {
-    method: 'POST',
-    headers: {
-        'Content-Type': 'application/json',
-      },
-     body: JSON.stringify(params),
-  };
-  var errorIs=false
-
-  fetch(`${apiUrl}/products/products`, requestOptions)
-  .then((response) => {
-    if (response.status != 201) {
-        errorIs=!errorIs
-      // Handle the 400 Bad Request error
-      console.error('Bad Request Error:', response);
-    }
-    return response.json();
-  })
-  .then((data) => {
-    // Handle the response data here
-     if (errorIs) {
-        document.getElementsByClassName("pop")[0].innerHTML=`
-        <div class="error">
-        <h1>
-            an error has occurred
-        </h1>
-        </div>
-        `
-        document.getElementsByClassName("pop")[0].classList.remove("hid")
-        setTimeout(() => {
-            document.getElementsByClassName("pop")[0].classList.add("hid")
-            document.getElementsByClassName("pop")[0].innerHTML=`
-            <div class="dit">
-                <div class="lds-facebook"><div></div><div></div><div></div></div>
-                <h1>
-                    Adding product
-                </h1>
-            </div>
-            `
-            window.location=window.location
-        }, 10000);
-     }else{
-   
-
-        const formData= new FormData()
-        formData.append("productId",data._id)
-        formData.append("imageUrl",inputs[15].files[0])
-        const requestOptionsOne = {
-          method: 'POST',
-           body: formData,
-        };
-        fetch(`${apiUrl}/productImage/product-images`, requestOptionsOne)
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {  
-        })
-        .catch((error) => {
-          // Handle any errors
-          console.error('Error:', error);
-        });
-
-
-
-
-        for (let i = 0; i < carDetails.length; i++) {
-            const element = carDetails[i];
-             element.productId=data._id
-         }
-         
-       
-        const requestOptionsTwo = {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-         body: JSON.stringify(carDetails),
-        };
-        fetch(`${apiUrl}/car-details/car-details`, requestOptionsTwo)
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {  
-        })
-        .catch((error) => {
-          // Handle any errors
-          console.error('Error:', error);
-        });
-
-
-
-
-        for (let i = 0; i < garageDetails.length; i++) {
-            const element = garageDetails[i];
-             element.productId=data._id
-         }
-           
-        const requestOptionsThree = {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-           body: JSON.stringify(garageDetails),
-          };
-          fetch(`${apiUrl}/garage-details/garage-details`, requestOptionsThree)
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {  
-            addCarForm.getElementsByTagName("h6")[0].classList.add("okay")
-            addCarForm.getElementsByTagName("h6")[0].innerHTML="product add successfully"
-            addCarForm.classList.remove("active_parent_to_button")
-            setTimeout(() => {
-             addCarForm.getElementsByTagName("h6")[0].classList.remove("okay")
-             addCarForm.getElementsByTagName("h6")[0].innerHTML = ""
-            }, 10000);
-          })
-          .catch((error) => {
-            // Handle any errors
-            console.error('Error:', error);
-          });
-
-
-
-
-
-
-         for (let k = 0; k < productImage.length; k++) {
-            const element = productImage[k];
-            const formData= new FormData()
-            formData.append("productId",data._id)
-            formData.append("imageUrl",element)
-            const requestOptionsOne = {
-              method: 'POST',
-               body: formData,
-            };
-            fetch(`${apiUrl}/OtherImage/OtherImage`, requestOptionsOne)
-            .then((response) => {
-              return response.json();
-            })
-            .then((data) => { 
-                document.getElementsByClassName("pop")[0].classList.add("hid")
-                document.getElementsByClassName("pop")[0].innerHTML=`
-                <div class="dit">
-                    <div class="lds-facebook"><div></div><div></div><div></div></div>
-                    <h1>
-                        Adding product
-                    </h1>
-                </div>
-                ` 
-            })
-            .catch((error) => {
-              // Handle any errors
-              console.error('Error:', error);
-            });
-         }
-
-
-
-
-     }
-  })
-  .catch((error) => {
-    // Handle any errors
-    console.error(error);
-    document.getElementsByClassName("pop")[0].innerHTML=`
-    <div class="error">
-    <h1>
-        an error has occurred
-    </h1>
-    </div>
-    `
-    document.getElementsByClassName("pop")[0].classList.remove("hid")
-    setTimeout(() => {
-        document.getElementsByClassName("pop")[0].classList.add("hid")
-        document.getElementsByClassName("pop")[0].innerHTML=`
-        <div class="dit">
-            <div class="lds-facebook"><div></div><div></div><div></div></div>
-            <h1>
-                Adding product
-            </h1>
-        </div>
-        `
-        window.location=window.location
-    }, 10000);
-  });
-
-    
-
-})

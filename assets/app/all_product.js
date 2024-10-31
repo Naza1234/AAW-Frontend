@@ -115,28 +115,28 @@ function populateData(data){
                <img src="../assets/image/car.png" alt="">
                <div class="dit">
                    <h1>
-                     ${element. Model}
+                    ${element. Make + " " + element. Model}
                    </h1>
                    
                </div>
              </div>
 
            <p> Description <br>
-              ${element.description}
+              ${element.Description}
            </p>
-              ${element.category === "auction product " ?` <h3>.ends on:<b class="has_ended">${element.endDateTime}</b></h3>`: "" }
+              ${element.Category === "Auction Product" ?` <h3>.ends on:<b class="has_ended">${element.endDateTime}</b></h3>`: "" }
               <h3>solid:<b class="has_ended">${element.productSold}</b></h3>
              <h3>
                <b>
                    price updates
                </b>
-               <span>
-             class="price">$ ${element.Price.toLocaleString()}</h2>
+               <span
+                <h2 class="price"> $ ${element.Price.toLocaleString()}</h2>
                </span>
              </h3>
              <button class="item_button">
              <h5 class="hid">${element._id}</h5>
-             <h5 class="hid_data">${element.category}</h5>
+             <h5 class="hid_data">${element.Category}</h5>
              <h5 class="hid_data">${element.productUserApproved}</h5>
               details
              </button>
@@ -195,7 +195,7 @@ function checkItems(){
   for (let i = 0; i < items.length; i++) {
       const element = items[i];
       var itemStartDate=element.getElementsByClassName("hid_data")[0].textContent
-      if (itemStartDate === "auction product ") {
+      if (itemStartDate === "Auction Product") {
          element.classList.remove("hid")
       }else{
          element.classList.add("hid")
@@ -217,7 +217,7 @@ var buttons =document.querySelectorAll(".quick_nav span")
   for (let i = 0; i < items.length; i++) {
       const element = items[i];
       var itemStartDate=element.getElementsByClassName("hid_data")[0].textContent
-      if (itemStartDate === "auction product ") {
+      if (itemStartDate === "Auction Product") {
          element.classList.remove("hid")
       }else{
          element.classList.add("hid")
@@ -231,7 +231,7 @@ var buttons =document.querySelectorAll(".quick_nav span")
   for (let i = 0; i < items.length; i++) {
       const element = items[i];
       var itemStartDate=element.getElementsByClassName("hid_data")[0].textContent
-      if (itemStartDate === "auction product ") {
+      if (itemStartDate === "Auction Product") {
          element.classList.add("hid")
       }else{
          element.classList.remove("hid")
@@ -298,14 +298,14 @@ function populateSumProductData(data){
              <li class="other_items">
              <span>
                 <img src="../assets/image/car.png" alt=""> 
-                ${element. Model}
+                ${element. Make + " " + element. Model}
              </span>
              <span>
-             $ ${element.hPrice.toLocaleString()}
+             $ ${element.Price.toLocaleString()}
              </span>
              
              <span>
-                 ${element.category != "auction product " ? "One time sail" : element.endDateTime < formattedDateTime ? "AuctionEnded" : element.startingDateTime > formattedDateTime? "Yet To Stat" : "In Progress" }
+                 ${element.Category != "Auction Product" ? "One time sail" : element.endDateTime < formattedDateTime ? "AuctionEnded" : element.startingDateTime > formattedDateTime? "Yet To Stat" : "In Progress" }
              </span>
              <span class="next-page-btn">
              <h5 class="hid_data">${element.productSold}</h5>
@@ -407,3 +407,6 @@ var buttonsTwo =document.querySelectorAll(".top_nav li")
         })
     }
 }
+
+
+fetch(`${apiUrl}/endAuction/endAuctions`).then(res => res.json())

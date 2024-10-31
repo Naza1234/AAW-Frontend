@@ -98,7 +98,27 @@ var OneTimeSail=[]
 function populateData(data){
 
 
-
+//   {
+//     "_id": "6713c87c33965c6fcb9376dd",
+//     "userId": "6710e8e030b2ae2f97e4f28e",
+//     "Make": "test 1",
+//     "Model": "test 1",
+//     "OdoMeter": 1234,
+//     "Year": 1234,
+//     "Location": "test 1",
+//     "Qualification": "As-Is Condition (Major Repairs)",
+//     "Category": "Auction Product",
+//     "Price": 1324,
+//     "Description": "test 1",
+//     "startingDateTime": "2024-10-19 15:01",
+//     "endDateTime": "2024-10-26 15:01",
+//     "productApproved": false,
+//     "productSold": false,
+//     "productUserApproved": false,
+//     "createdAt": "2024-10-19T14:55:56.940Z",
+//     "updatedAt": "2024-10-19T14:55:56.940Z",
+//     "__v": 0
+// },
 
 
     for (let i = 0; i < data.length; i++) {
@@ -115,16 +135,16 @@ function populateData(data){
                <img src="../assets/image/car.png" alt="">
                <div class="dit">
                    <h1>
-                     ${element.Model}
+                     ${element. Make + " " + element. Model}
                    </h1>
                    
                </div>
              </div>
 
            <p> Description <br>
-              ${element.description}
+              ${element.Description}
            </p>
-              ${element.category === "auction product " ?` <h3>.ends on:<b class="has_ended">${element.endDateTime}</b></h3>`: "" }
+              ${element.Category === "Auction Product" ?` <h3>.ends on:<b class="has_ended">${element.endDateTime}</b></h3>`: "" }
               <h3>solid:<b class="has_ended">${element.productSold}</b></h3>
              <h3>
                <b>
@@ -136,7 +156,7 @@ function populateData(data){
              </h3>
              <button class="item_button">
              <h5 class="hid">${element._id}</h5>
-             <h5 class="hid_data">${element.category}</h5>
+             <h5 class="hid_data">${element.Category}</h5>
              <h5 class="hid_data">${element.productUserApproved}</h5>
               details
              </button>
@@ -154,14 +174,14 @@ function populateData(data){
 
           var processedBalance =0
           var notProcessedBalance =0
-          var chas_out=parseFloat(document.getElementsByClassName("cash_out_amount")[0].textContent.replace(/[^\d.]/g, ''));
+    
 
 
         var items=document.querySelectorAll(".Btn_items .item")
           for (let i = 0; i < items.length; i++) {
               const element = items[i];
               var itemStartDate=element.getElementsByClassName("hid_data")[0].textContent
-              if (itemStartDate === "auction product ") {
+              if (itemStartDate === "Auction Product") {
                 auctionProducts.push(element)
               }else{
                 OneTimeSail.push(element)
@@ -201,34 +221,6 @@ function populateData(data){
         $${(notProcessedBalance+processedBalance).toLocaleString()}
         `
 
-         const UserParams={
-          UserAccountBalance:processedBalance-chas_out
-         }
-
-
-         
-         const requestOptions = {
-          method: 'PUT',
-          headers: {
-              'Content-Type': 'application/json',
-            },
-           body: JSON.stringify(UserParams),
-        };
-    
-        fetch(`${apiUrl}/user/users/${UserId}`, requestOptions)
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-        console.log(data);
-        })
-        .catch((error) => {
-          // Handle any errors
-          console.error('Error:', error);
-        });
-
-
-
 
 
 
@@ -248,9 +240,9 @@ function chashOut(data){
 
   for (let i = 0; i < data.length; i++) {
       const element = data[i];
-      if (element.Processed === "true") {
+      if (element.Processed) {
          processedCashOut += element.amount
-      }else{
+      }else if(!element.Processed && !element.Declied){
         notProcessedCashOut += element.amount
       }
   }
@@ -314,7 +306,7 @@ function checkItems(){
   for (let i = 0; i < items.length; i++) {
       const element = items[i];
       var itemStartDate=element.getElementsByClassName("hid_data")[0].textContent
-      if (itemStartDate === "auction product ") {
+      if (itemStartDate === "Auction Product") {
          element.classList.remove("hid")
       }else{
          element.classList.add("hid")
@@ -343,7 +335,7 @@ var buttons =document.querySelectorAll(".quick_nav span")
   for (let i = 0; i < items.length; i++) {
       const element = items[i];
       var itemStartDate=element.getElementsByClassName("hid_data")[0].textContent
-      if (itemStartDate === "auction product ") {
+      if (itemStartDate === "Auction Product") {
          element.classList.remove("hid")
       }else{
          element.classList.add("hid")
@@ -357,7 +349,7 @@ var buttons =document.querySelectorAll(".quick_nav span")
   for (let i = 0; i < items.length; i++) {
       const element = items[i];
       var itemStartDate=element.getElementsByClassName("hid_data")[0].textContent
-      if (itemStartDate === "auction product ") {
+      if (itemStartDate === "Auction Product") {
          element.classList.add("hid")
       }else{
          element.classList.remove("hid")
@@ -399,3 +391,4 @@ var buttons =document.querySelectorAll(".quick_nav span")
 
 
 
+  fetch(`${apiUrl}/endAuction/endAuctions`).then(res => res.json())

@@ -1,5 +1,8 @@
 const winUrl="https://autoauction.space"
 const apiUrl="https://aawserver.onrender.com"
+// const apiUrl="http://localhost:3000"
+
+
 
 
 
@@ -444,7 +447,7 @@ return response.json();
     Auto Auction
 </div>
 
-<a href="./Winners.html">
+<a href="../pages/Winners.html">
 <div class="my_account logs">
     <img src="${data.UserProfileImage}" alt="">
     <h1>
@@ -477,22 +480,7 @@ if (logs) {
 
 
 
-
-
-fetch(`${apiUrl}/user/users/${UserId}`)
-.then((response) => {
-return response.json();
-})
-.then((data) => {
-   if (data._id) {
-    document.getElementsByClassName("logs")[0].innerHTML=`
-    <a href="${winUrl}/pages/Home.html">
-    <img src="${data.UserProfileImage}" alt="">
-    </a>
-     `
-   }
-}
-)
-.catch((error) => {
-console.error('Error:', error);
-});
+setInterval(() => {    
+    fetch(`${apiUrl}/endAuction/endAuctions`).then(res => res.json())
+  }, 5000);
+  

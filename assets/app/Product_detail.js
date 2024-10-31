@@ -148,22 +148,44 @@ function fetchData(id){
     });
 }
 
+//   {
+//     "_id": "6713c87c33965c6fcb9376dd",
+//     "userId": "6710e8e030b2ae2f97e4f28e",
+//     "Make": "test 1",
+//     "Model": "test 1",
+//     "OdoMeter": 1234,
+//     "Year": 1234,
+//     "Location": "test 1",
+//     "Qualification": "As-Is Condition (Major Repairs)",
+//     "Category": "Auction Product",
+//     "Price": 1324,
+//     "Description": "test 1",
+//     "startingDateTime": "2024-10-19 15:01",
+//     "endDateTime": "2024-10-26 15:01",
+//     "productApproved": false,
+//     "productSold": false,
+//     "productUserApproved": false,
+//     "createdAt": "2024-10-19T14:55:56.940Z",
+//     "updatedAt": "2024-10-19T14:55:56.940Z",
+//     "__v": 0
+// },
 
 
  
 function popUp(carData,carImg,carDetails,garageDetails,carPrice,id,conversation){
   
-     
+     console.log(carPrice);
       document.getElementsByClassName("popup")[0].innerHTML=`
       <section class="popitem_auction_room">
       <h1>
-      ${carData.productName} 
+      ${carData. Make + " " + carData. Model}
+ 
       </h1>
      <span>
       <span>
           <img src="../assets/image/arro.png" alt="">
             <b>
-            $ ${carPrice.length === 0? carData.price.toLocaleString() : carPrice[0].amount.toLocaleString()}
+            $ ${carPrice.length === 0? carData.Price : carPrice[0].amount}
             </b>
       </span>
       recent bid
@@ -174,17 +196,19 @@ function popUp(carData,carImg,carDetails,garageDetails,carPrice,id,conversation)
       description
      </h3>
      <p class="min_h110">
-     ${carData.description}     </p>
+     ${carData.Description}     </p>
+     <div class="nav_div_cont">
      <nav>
-         <button class="active detail_btn">other details </button>
-         <button class=" detail_btn">garage details</button>
-         <button class=" detail_btn">category</button>
-     </nav>
-     <div class="info">
-      <ul class="detail_list">
-        
-      </ul>
-     </div>
+     <button class="active detail_btn">other details </button>
+     <button class=" detail_btn">garage details</button>
+     <button class=" detail_btn">category</button>
+ </nav>
+ <div class="info">
+  <ul class="detail_list">
+    
+  </ul>
+ </div>
+ </div>
      <h3>
       Conversation
      </h3>
@@ -281,12 +305,12 @@ function popUp(carData,carImg,carDetails,garageDetails,carPrice,id,conversation)
                 }
             }
             if(innerTest === "category"){
-                if(carData.qualification === "As-Is Condition (Major Repairs)"){
+                if(carData.Qualification === "As-Is Condition (Major Repairs)"){
                     console.log(1);
                     document.getElementsByClassName("detail_list")[0].innerHTML=`
                     <li>
                     <h4>
-                         qualification
+                         Qualification
                     </h4>
       
                     <h5>
@@ -301,12 +325,12 @@ function popUp(carData,carImg,carDetails,garageDetails,carPrice,id,conversation)
                     </p>
                     `
                 }
-                if(carData.qualification === " Minor Repairs Required"){
+                if(carData.Qualification === " Minor Repairs Required"){
                     console.log(1);
                     document.getElementsByClassName("detail_list")[0].innerHTML=`
                     <li>
                     <h4>
-                         qualification
+                         Qualification
                     </h4>
       
                     <h5>
@@ -321,12 +345,12 @@ function popUp(carData,carImg,carDetails,garageDetails,carPrice,id,conversation)
                     </p>
                     `
                 }
-                if(carData.qualification === "Certified or Minimal Repairs Required"){
+                if(carData.Qualification === "Certified or Minimal Repairs Required"){
                     console.log(1);
                     document.getElementsByClassName("detail_list")[0].innerHTML=`
                     <li>
                     <h4>
-                         qualification
+                         Qualification
                     </h4>
       
                     <h5>
@@ -454,3 +478,5 @@ function populateChart(input,parent,id){
 
 
 }
+
+fetch(`${apiUrl}/endAuction/endAuctions`).then(res => res.json())

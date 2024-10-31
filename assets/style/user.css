@@ -234,7 +234,7 @@ body{
     right: 1vw;
     top: 50px;
     height: calc(99vh - 50px);
-    z-index: 2;
+    z-index: 10;
     padding: 3px;
     padding-right: 1px;
     border-radius: 10px;
@@ -790,7 +790,7 @@ body{
     position: absolute;
     top: 0;
     left: 0;
-    background: rgba(140, 17, 27, 0.50);
+    background:#2533f540;
     justify-content: center;
     align-items: center;
     z-index: 2;
@@ -943,6 +943,14 @@ body{
 }
 .popup .popitem_auction_room p.min_h110{
     min-height: 110px;
+}
+.nav_div_cont {
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
 }
 .popup .popitem_auction_room nav{
     display: flex;
@@ -2166,12 +2174,12 @@ body{
     width: 100%;
     min-width: 600px;
     display: flex;
-    background-color: #fcfafa;
+    background-color: #2533f50d;
     padding: 10px 15px;
     min-height: 80px;
     align-items: center;
-    border: 2px solid #bbb9b9;
-    border-left: 15px solid #bbb9b9;
+    border: 2px solid var(--primary);
+    border-left: 15px solid var(--primary);
     justify-content: space-between;
     flex-direction: column;
     gap: 10px;
@@ -2738,3 +2746,34 @@ body {
     opacity: 0.25;
   }
 }
+
+
+
+.loader {
+    width: 50px;
+    aspect-ratio: 1;
+    display: grid;
+    border: 4px solid #0000;
+    border-radius: 50%;
+    scale: .5;
+    margin-left: 1vw;
+    border-right-color:var(--primary);
+    animation: l15 1s infinite linear;
+  }
+  .loader::before,
+  .loader::after {    
+    content: "";
+    grid-area: 1/1;
+    margin: 2px;
+    border: inherit;
+    border-radius: 50%;
+    animation: l15 2s infinite;
+  }
+  .loader::after {
+    margin: 8px;
+    animation-duration: 3s;
+  }
+
+  @keyframes l15{ 
+    100%{transform: rotate(1turn)}
+  }

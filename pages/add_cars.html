@@ -95,7 +95,7 @@
         </a>
         </nav>
       </header>
-      <section class="add_vehicle">
+      <section class="add_vehicle add_car">
         <section class="forms">
     
          <form action="">
@@ -103,7 +103,7 @@
 
 
             
-            <div>
+            <div class="">
                 <h1>
                     which make
                 </h1>
@@ -131,7 +131,7 @@
                 <h1>
                    Odo Meter
                 </h1>
-                <input type="number" >
+                <input type="number" placeholder="000">
                 <div class="button">
                     next
                 </div>
@@ -143,7 +143,7 @@
                 <h1>
                     which Year
                 </h1>
-                <input type="number" >
+                <input type="number" placeholder="0000" maxlength="4">
                 <div class="button">
                     next
                 </div>
@@ -210,10 +210,16 @@
                 <h1>
                     Car Details
                 </h1>
-                <section>
+                <section class="add_multiple_info">
                     <div>
-                        <input type="text">
-                        <input type="text">
+                        <label for="title_det">
+                            Title:
+                            <input type="text" id="title_det" name="title_det" placeholder="edit me">
+                        </label>
+                        <label for="info_det">
+                            information:
+                            <input type="text" id="info_det" name="info_det" placeholder="edit me">
+                        </label>
                         <div class="button_add" style="
                         background-color: #1254ff;
                         color: #fff;">
@@ -225,7 +231,7 @@
                        
                        </ul>
                 </section>
-                <div class="button" style="margin-left: 2.55%;">
+                <div class="button" >
                     next
                 </div>
             </div>
@@ -237,22 +243,28 @@
                 <h1>
                     Garage Details
                 </h1>
-             <section>
-                <div>
-                    <input type="text">
-                    <input type="text">
-                    <div class="button_add" style="
-                    background-color: #1254ff;
-                    color: #fff;">
-                        add
-                    </div>
-                   
-                   </div>
-                   <ul>
-                   
-                   </ul>
-             </section>
-             <div class="button" style="margin-left: 2.55%;" >
+                <section class="add_multiple_info">
+                    <div>
+                        <label for="title_gar">
+                            Title:
+                            <input type="text" id="title_gar" name="title_gar" placeholder="edit me">
+                        </label>
+                        <label for="info_gar">
+                            information:
+                            <input type="text" id="info_gar" name="info_gar" placeholder="edit me">
+                        </label>
+                        <div class="button_add" style="
+                        background-color: #1254ff;
+                        color: #fff;">
+                            add
+                        </div>
+                       
+                       </div>
+                       <ul>
+                       
+                       </ul>
+                </section>
+             <div class="button" >
                 next
             </div>
             </div>
@@ -310,34 +322,43 @@
 
 
             <div class="hid">
-                <h1>
-                    cover image
-                </h1>
-                <input type="file" >
+                <div class="custom-import custom-button">
+                    <span class="label">Import cover image</span>
+                    <span class="label-file">
+
+                    </span>
+                    
+                    <input class="import-field" type="file" name="name" value="1" placeholder="">
+                  </div>
+                  <script>
+                    // Select the file input and the span where the file name will be displayed
+                    const fileInputCostume = document.querySelector('.import-field');
+                    const labelFile = document.querySelector('.label-file');
+                  
+                    // Add an event listener for when the file is selected
+                    fileInputCostume.addEventListener('change', function(event) {
+                      const fileName = event.target.files[0]?.name || 'No file selected';  // Get the file name or a fallback message
+                      labelFile.textContent = fileName;  // Update the span with the file name
+                    });
+                  </script>
                 <div class="button">
                     next
                 </div>
             </div>
    
             <div class="hid">
-                <h1>
-                    other images
-                </h1>
              <section>
-                <div>
-                    <input type="file">
-                    <div class="button_add_image" style="
-                    background-color: #1254ff;
-                    color: #fff;">
-                        add
-                    </div>
-                   
-                   </div>
+                <div class="custom-import custom-button">
+                    <span class="label">Import other images</span>
+                    <span class="label-file"></span>
+                    
+                    <input class="import-field image_back" type="file" name="name" value="1" placeholder="">
+                  </div>
                    <ul class="image_container">
-                   
+                  
                    </ul>
              </section>
-             <div class="button" style="margin-left: 2.55%;" >
+             <div class="button" >
                 next
             </div>
             </div>
@@ -356,6 +377,8 @@
          </form>
          
         </section>
+
+
         <section class="list">
             <div>
              <span class="active">

@@ -46,11 +46,12 @@ const container = document.getElementsByClassName("make_list")[0];
     `
     ;
     
+
     // Append the HTML to the container element
     container.insertAdjacentHTML("beforeend", html);
 }
 
-
+  document.getElementsByClassName("loader")[0].classList.add("hid")
        
     })
     .catch((error) => {
@@ -59,6 +60,7 @@ const container = document.getElementsByClassName("make_list")[0];
 
 
 }
+
 
 function encodeObject(obj) {
     return Object.keys(obj)
@@ -452,4 +454,28 @@ function populateData(element){
    </li>
     `
     container.insertAdjacentHTML('beforeend',html)
+}
+
+
+function noContentHtml(data) {
+    var html = `
+    <div class="no_cont"
+         style="display: flex;
+                width: 100%;
+                min-height: 400px;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;">
+        <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+        <dotlottie-player src="https://lottie.host/2fb3f3c8-c9f3-4bc4-9fcb-8a04813bcb7f/3xQzNFyrEV.json" 
+                          background="transparent" 
+                          speed="1" 
+                          style="width: 300px; height: 300px;" 
+                          loop 
+                          autoplay>
+        </dotlottie-player>
+        <h1>${data}</h1>      
+    </div>
+    `;
+    return html;
 }

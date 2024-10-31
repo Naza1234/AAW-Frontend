@@ -12,18 +12,30 @@ var item =document.getElementsByClassName("drop_down")
 
 for (let i = 0; i < item.length; i++) {
     const element = item[i];
-    element.addEventListener("click",(e)=>{
-       var targetElement = e.target
-       var item2=document.getElementsByClassName("drop_down")
-       for (let i = 0; i < item2.length; i++) {
-        const element = item2[i].getElementsByTagName("ul")[0].classList.remove("active");
-        
-       }
-       element.getElementsByTagName("ul")[0].classList.add("active")
-       setTimeout(() => {
-        targetElement.getElementsByTagName("ul")[0].classList.remove("active")
-       }, 2500);
-    })
+
+    // Mouse enter to show the dropdown
+    element.addEventListener("mouseenter", (e) => {
+        var targetElement = e.target;
+
+        // Remove 'active' class from all dropdowns
+        var dropdowns = document.getElementsByClassName("drop_down");
+        for (let i = 0; i < dropdowns.length; i++) {
+            dropdowns[i].getElementsByTagName("ul")[0].classList.remove("active");
+        }
+
+        // Add 'active' class to the current dropdown
+        targetElement.getElementsByTagName("ul")[0].classList.add("active");
+    });
+
+    // Mouse leave to hide the dropdown
+    element.addEventListener("mouseleave", (e) => {
+        var targetElement = e.target;
+
+        // Remove 'active' class when the mouse leaves the element
+        setTimeout(() => {
+            targetElement.getElementsByTagName("ul")[0].classList.remove("active");
+        }, 2000);
+    });
 }
 
 const UserId=localStorage.getItem("AutoAuctionUserKey")
@@ -81,3 +93,7 @@ if (logs) {
     })
 }
 
+setInterval(() => {    
+    fetch(`${apiUrl}/endAuction/endAuctions`).then(res => res.json())
+  }, 5000);
+  
