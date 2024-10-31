@@ -179,10 +179,9 @@ async function convertImagesToBase64(images) {
   }));
 }
 
-
-document.getElementsByTagName("form")[0].addEventListener("submit", async (e) => {
+ document.getElementsByTagName("form")[0].addEventListener("submit", async (e) => {
   e.preventDefault();
-
+  await  checkUser() 
   const fileInput = inputs[15].files[0]; // Make sure 'inputs' is defined correctly
   
   // Convert file to Base64
@@ -415,3 +414,17 @@ window.onload = () => {
   }
 };
 
+
+
+function checkUser() {
+    fetch(`${apiUrl}/user/users/${UserId}`)
+.then((response) => {
+return response.json();
+})
+.then((data) => {
+    
+    if(!data.UserName){
+        window.location=`${winUrl}/pages/loging.html`
+    }
+})
+}

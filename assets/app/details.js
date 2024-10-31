@@ -21,6 +21,10 @@ function fetchData(id) {
     fetch(`${apiUrl}/user/users/${UserId}`)
       .then(res => res.json())
       .then(userData => {
+      
+  if(!userData.UserName){
+    window.location=`${winUrl}/pages/loging.html`
+}
         if (userData.UserPaymentStatues === "free") {
           const errorNot = document.getElementsByClassName("error_not")[0];
           errorNot.innerHTML = "<b>Please note:</b> <br> You are on a free account and cannot place bid on more than one product.";
