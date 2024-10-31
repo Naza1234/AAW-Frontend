@@ -441,21 +441,22 @@ return response.json();
 })
 .then((data) => {
     
-     
-    document.getElementsByClassName("top_nav")[0].innerHTML=`
-    <div class="logo">
-    Auto Auction
-</div>
-
-<a href="../pages/Winners.html">
-<div class="my_account logs">
-    <img src="${data.UserProfileImage}" alt="">
-    <h1>
-        ${data.UserName}
-    </h1>
-  </div>
-</a>
-    `
+   if(data.UserName){
+        document.getElementsByClassName("top_nav")[0].innerHTML=`
+        <div class="logo">
+        Auto Auction
+    </div>
+  
+    <a href="./Winners.html">
+    <div class="my_account logs">
+        <img src="${data.UserProfileImage}" alt="">
+        <h1>
+            ${data.UserName}
+        </h1>
+      </div>
+    </a>
+        `
+    }
 
 
     

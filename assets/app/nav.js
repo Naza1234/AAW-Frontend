@@ -51,28 +51,27 @@ return response.json();
 })
 .then((data) => {
     
-     
-    document.getElementsByClassName("top_nav")[0].innerHTML=`
-    <div class="logo">
-    Auto Auction
-</div>
-<div class="search">
-   <input type="text" placeholder="search for ur new car">
-   <button>
-       Search Inventory   
-   </button>
-</div>
-<a href="./Winners.html">
-<div class="my_account logs">
-    <img src="${data.UserProfileImage}" alt="">
-    <h1>
-        ${data.UserName}
-    </h1>
-  </div>
-</a>
-    `
-
-
+    if(data.UserName){
+        document.getElementsByClassName("top_nav")[0].innerHTML=`
+        <div class="logo">
+        Auto Auction
+    </div>
+    <div class="search">
+       <input type="text" placeholder="search for ur new car">
+       <button>
+           Search Inventory   
+       </button>
+    </div>
+    <a href="./Winners.html">
+    <div class="my_account logs">
+        <img src="${data.UserProfileImage}" alt="">
+        <h1>
+            ${data.UserName}
+        </h1>
+      </div>
+    </a>
+        `
+    }
 
 })
     
