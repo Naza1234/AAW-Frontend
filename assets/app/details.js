@@ -200,19 +200,25 @@ function populateSubImage(dataOtherImg) {
     });
   }
 }
-
-// Function to populate sub-images on the page
+// Function to exchange the src of sub-images with the main image
 function subImage() {
   var subImages = document.querySelectorAll(".sub_image img");
   var mainImage = document.querySelector(".cover_img img"); // assuming you meant ".cover_img"
 
   subImages.forEach(subImage => {
     subImage.addEventListener("click", () => {
-      var imgSrc = subImage.src;
-      mainImage.src = imgSrc;
+      // Temporarily store the src of the main image
+      var tempSrc = mainImage.src;
+      
+      // Set the main image src to the clicked sub-image src
+      mainImage.src = subImage.src;
+      
+      // Set the clicked sub-image src to the original main image src
+      subImage.src = tempSrc;
     });
   });
 }
+
 
 
 
