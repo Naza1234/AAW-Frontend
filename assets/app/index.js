@@ -227,7 +227,7 @@ function populateData(data){
                     </div>
                     <button class="button_os">
                     <h1 class="hid" >${OneTimeSaleProducts[oneTimeSaleCount]._id}</h1>
-                       Submit a bid
+                       see details
                     </button>
             </div>
                 `
