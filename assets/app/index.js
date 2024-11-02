@@ -53,8 +53,8 @@ return response.json();
 .then((data) => {
     if(data.length>0){
    populateData(data)
-   uploadImg()
    document.getElementsByClassName("loading_data")[0].classList.add("loading_data_remove")
+   uploadImg()
 }
 }
 )
