@@ -67,10 +67,25 @@ console.error('Error:', error);
 
 
 
-setInterval(() => {    
-  fetch(`${apiUrl}/endAuction/endAuctions`).then(res => res.json())
-}, 5000);
+let isFetching = false;
 
+setInterval(() => {
+  if (!isFetching) {
+    isFetching = true; // Indicate that a request is in progress
+
+    fetch(`${apiUrl}/endAuction/endAuctions`)
+      .then(res => res.json())
+      .then(data => {
+        // Process the data as needed
+      })
+      .catch(error => {
+        console.error("Error fetching auction data:", error);
+      })
+      .finally(() => {
+        isFetching = false; // Reset to allow the next request
+      });
+  }
+}, 5000);
 
 
 document.getElementsByClassName("notification")[0].addEventListener("click",()=>{

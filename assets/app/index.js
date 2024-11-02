@@ -51,9 +51,11 @@ fetch(`${apiUrl}/products/products`)
 return response.json();
 })
 .then((data) => {
+    if(data[0]=== !null){
    populateData(data)
    uploadImg()
-   
+   document.getElementsByClassName("loading_data")[0].classList.add("loading_data_remove")
+}
 }
 )
 .catch((error) => {
@@ -89,10 +91,10 @@ fetch(`${apiUrl}/productImage/product-images`)
 return response.json();
 })
 .then((data) => {
-   productImg=data
-   uploadImg()
-   if(data){
-       document.getElementsByClassName("loading_data")[0].classList.add("loading_data_remove")
+    if(data){
+       productImg=data
+       
+       uploadImg()
    }else{
     window.location=window.location
    }
@@ -480,8 +482,22 @@ if (logs) {
 
 
 
+let isFetching = false;
 
-setInterval(() => {    
-    fetch(`${apiUrl}/endAuction/endAuctions`).then(res => res.json())
-  }, 5000);
-  
+setInterval(() => {
+  if (!isFetching) {
+    isFetching = true; // Indicate that a request is in progress
+
+    fetch(`${apiUrl}/endAuction/endAuctions`)
+      .then(res => res.json())
+      .then(data => {
+        // Process the data as needed
+      })
+      .catch(error => {
+        console.error("Error fetching auction data:", error);
+      })
+      .finally(() => {
+        isFetching = false; // Reset to allow the next request
+      });
+  }
+}, 5000);
