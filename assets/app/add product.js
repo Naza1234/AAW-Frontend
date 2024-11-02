@@ -31,22 +31,52 @@ for (let j = 0; j < nextButtons.length; j++) {
         
         // Check if any input value is present
         if (Array.from(inputElements).some(input => input.value)) {
-            switchSteps(j);
+            switchSteps(j+1);
             updateParams();
         } else if (inputElements.length === 0) {
-            switchSteps(j);
+            switchSteps(j+1);
             updateParams();
         }
     });
 }
+// Add event listeners for past steps
+const listItems = document.querySelectorAll(".list ul li");
+listItems.forEach((item, index) => {
+    item.addEventListener("click", () => {
+        // Only allow clicking on past steps
+        if (item.classList.contains("active") || index < getActiveStepIndex()) {
+            switchSteps(index); // Switch to the clicked step
+            updateParams();
+        }
+    });
+});
 
+// Function to get the index of the currently active step
+function getActiveStepIndex() {
+    const activeItem = document.querySelector(".list ul li.active");
+    return Array.from(listItems).indexOf(activeItem);
+}
+
+// Modified switchSteps function
 function switchSteps(index) {
     const listItems = document.querySelectorAll(".list ul li");
-    listItems[index].classList.remove("active");
-    listItems[index + 1].classList.add("active");
-    nextButtons[index].parentElement.classList.add("hid");
-    nextButtons[index + 1].parentElement.classList.remove("hid");
+    
+    // Remove active class from all steps
+    listItems.forEach((item, idx) => {
+        item.classList.remove("active");
+        if (idx <= index) {
+            item.classList.add("active");
+        }
+    });
+
+    // Hide all parent elements and show the one corresponding to the new index
+    for (let i = 0; i < nextButtons.length; i++) {
+        nextButtons[i].parentElement.classList.add("hid");
+    }
+    
+    nextButtons[index].parentElement.classList.remove("hid");
 }
+
 
 function updateParams() {
     params = {
