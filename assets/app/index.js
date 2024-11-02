@@ -51,7 +51,7 @@ fetch(`${apiUrl}/products/products`)
 return response.json();
 })
 .then((data) => {
-    if(data[0]=== !null){
+    if(data.length>0){
    populateData(data)
    uploadImg()
    document.getElementsByClassName("loading_data")[0].classList.add("loading_data_remove")
@@ -91,7 +91,7 @@ fetch(`${apiUrl}/productImage/product-images`)
 return response.json();
 })
 .then((data) => {
-    if(data){
+    if(data.length>0){
        productImg=data
        
        uploadImg()
