@@ -52,6 +52,7 @@ return response.json();
      checkItems()
      itemsButtons()
      document.getElementsByClassName("loading_data")[0].classList.add("loading_data_remove")
+     
   }
   )
   .catch((error) => {
@@ -99,7 +100,7 @@ var auctionProducts=[]
 var OneTimeSail=[]
 
 function populateData(data){
-
+    document.getElementsByClassName("loading_data")[0].classList.add("loading_data_remove")
 
     for (let i = 0; i < data.length; i++) {
         const element = data[i];
