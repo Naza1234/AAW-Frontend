@@ -10,6 +10,7 @@ let items = document.querySelectorAll(".product_listing li:not(.heading)");
                 const element = items[i];
                 const bookmarkButton = element.querySelector(".book_mark");
                 bookmarkButton.addEventListener("click", (e) => {
+                    e.stopPropagation(); // Prevent click event from propagating to the parent element
                     addBookMark(e.target.parentElement);
                 });
             }
